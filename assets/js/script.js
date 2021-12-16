@@ -65,15 +65,11 @@ var displayRestaurants = function (data) {
   }
 };
 
-//NEED TO: filter results by cuisine type
-//response[i].cuisine (key value pair, need value)
-c093726309044f1a55faf454c13e5007ffaf2458
-
 
 // initialize dropdown menu
 var dropdowns = document.querySelectorAll('.dropdown-trigger')
 for (var i = 0; i < dropdowns.length; i++){
-    M.Dropdown.init(dropdowns[i], "right");
+    M.Dropdown.init(dropdowns[i]);
 }
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -84,3 +80,10 @@ for (var i = 0; i < dropdowns.length; i++){
 //     }
 //     var instanceDropdown1 = M.Dropdown.init(dropdown1, dropdownOptions);
 // });
+
+
+//NEED TO: filter results by cuisine type
+//response[i].cuisine (key value pair, need value)
+c093726309044f1a55faf454c13e5007ffaf2458
+
+
