@@ -1,27 +1,36 @@
 //RESTAURANT API CALL
 var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
+var restaurantEl = document.querySelector("#restaurant"); //results container
 
-//containers
-var restaurantEl = document.querySelector("#restaurant");
+//click zipcode button
+var searchBtn = document.querySelector("#submit");
+
+searchBtn.addEventListener("click", function () {
+  var zipcode = document.querySelector("#zip");
+  if (zipcode.value) {
+    generateGeocode(zipcode.value);
+  }
+});
 
 //geocoding API call
-var geocodePlace = "New%20York%20City%20NY%20USA";
-var geocodeApiUrl =
-  "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=" +
-  geocodePlace +
-  "&accept-language=en&polygon_threshold=0.0";
+var generateGeocode = function (zipcode) {
+  var geocodeApiUrl =
+    "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward?postalcode=" +
+    zipcode +
+    "&country=USA&accept-language=en&polygon_threshold=0.0";
 
-fetch(geocodeApiUrl, {
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com",
-    "x-rapidapi-key": apiKey,
-  },
-}).then(function (response) {
-  response.json().then(function (location) {
-    getRestaurants(location);
+  fetch(geocodeApiUrl, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com",
+      "x-rapidapi-key": "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a",
+    },
+  }).then(function (response) {
+    response.json().then(function (location) {
+      getRestaurants(location);
+    });
   });
-});
+};
 
 //use coordinates for travel advisor API
 var getRestaurants = function (location) {
@@ -40,6 +49,8 @@ var getRestaurants = function (location) {
     "&tr_longitude=" +
     tr_longitude +
     "&restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&limit=30&currency=USD&open_now=false&lunit=km&lang=en_US";
+
+  console.log(apiUrl);
 
   fetch(apiUrl, {
     method: "GET",
@@ -64,11 +75,12 @@ var displayRestaurants = function (data) {
 };
 
 //NEED TO: filter results by cuisine type
+
 //response[i].cuisine (key value pair, need value)
 // initialize dropdown menu
-var dropdowns = document.querySelectorAll('.dropdown-trigger')
-for (var i = 0; i < dropdowns.length; i++){
-    M.Dropdown.init(dropdowns[i], "right");
+var dropdowns = document.querySelectorAll(".dropdown-trigger");
+for (var i = 0; i < dropdowns.length; i++) {
+  M.Dropdown.init(dropdowns[i], "right");
 }
 
 // document.addEventListener('DOMContentLoaded', function() {
