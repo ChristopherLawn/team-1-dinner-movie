@@ -14,12 +14,41 @@ var getMovieData = function (movieTitle) {
                     var Title = dataArr[i].Title;
                     var Year = dataArr[i].Year;
                     var Poster = dataArr[i].Poster;
+
+                    displayMovie(Title, Year, Poster, imdbID)
                 }
             })
         } else {
             console.log("response is not ok")
         }
     })
+}
+
+getMovieDetails = function (imdbID) {
+    console.log(`You clicked on the movie title with the id of ${imdbID}!`)
+}
+
+var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
+    var movieSectionCon = document.querySelector("#movie")
+
+    var movieContainer = document.createElement("div");
+    movieContainer.setAttribute("title", movieTitle);
+    movieContainer.addEventListener("click", getMovieDetails);
+
+    var movieTitleEl = document.createElement("h3");
+    movieTitleEl.textContent = movieTitle;
+    movieContainer.appendChild(movieTitleEl);
+
+    var movieYearEl = document.createElement("h4");
+    movieYearEl.textContent = movieYear;
+    movieContainer.appendChild(movieYearEl);
+
+    var moviePosterEl = document.createElement("img");
+    moviePosterEl.setAttribute("src", posterUrl);
+    movieContainer.appendChild(moviePosterEl)
+
+    movieSectionCon.appendChild(movieContainer);
+
 }
 
 getMovieData("Avengers")
