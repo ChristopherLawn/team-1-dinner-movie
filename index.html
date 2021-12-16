@@ -32,7 +32,7 @@
 
   <body>
     <header id="header" class="header-class">
-      <h1 class="header-title">
+      <h1 class="header-title center-align">
         <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
       </h1>
       <p>
@@ -42,8 +42,8 @@
       </p>
     </header>
 
-    <div id="search-container" class="search row">
-      <div id="food-choice-container" class="food-choice col s3">
+    <div id="search-container" class="search row center-align">
+      <div id="food-choice-container" class="food-choice col s4">
         <label id="food-label" class="food-header">Choose a Food Style:</label>
         <div name="food-dropdown" id="food-types" class="food-select">
           <!--  -->
@@ -64,20 +64,20 @@
         </div>
       </div>
 
-      <div id="date-container" class="date-choice col s3">
+      <div id="date-container" class="date-choice col s4">
         <label id="date-label" class="date-header">Choose a Date:</label>
         <input type="date" id="date" class="date-select" />
       </div>
 
-      <div id="zip-container" class="zip-choice col s3">
+      <div id="zip-container" class="zip-choice col s4">
         <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
-        <input type="text" id="zip" class="zip-select" />
-        <button type="submit" class="btn">Search</button>
+        <input type="text" id="zip" class="zip-select" pattern="[0-9]{5}"/>
+        <button type="submit" class="btn search-btn">Search</button>
       </div>
     </div>
 
-    <div id="results-container" class="results">
-      <div id="restaurant-results-container" class="restaurant-results">
+    <div id="results-container" class="results row">
+      <div id="restaurant-results-container" class="restaurant-results col s6">
         <label id="restaurant-label" class="restaurant-header"
           >Restaurant Options:</label
         >
@@ -88,7 +88,7 @@
         ></div>
       </div>
 
-      <div id="movie-results-container" class="movie-results">
+      <div id="movie-results-container" class="movie-results col s6">
         <label id="movie-label" class="movie-header">Movie Options:</label>
         <div name="movie-list" id="movie" class="movie-select"></div>
       </div>
