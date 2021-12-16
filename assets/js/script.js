@@ -1,3 +1,5 @@
+
+
 //RESTAURANT API CALL
 var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
 var restaurantEl = document.querySelector("#restaurant"); //results container
@@ -76,6 +78,8 @@ var displayRestaurants = function (data) {
 //NEED TO: filter results by cuisine type
 
 //response[i].cuisine (key value pair, need value)
+c093726309044f1a55faf454c13e5007ffaf2458
+
 // initialize dropdown menu
 var dropdowns = document.querySelectorAll(".dropdown-trigger");
 for (var i = 0; i < dropdowns.length; i++) {
