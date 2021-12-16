@@ -1,0 +1,30 @@
+.dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ }
+
+ .food-select {
+    width: max-content !important;
+    height:auto
+ }
+
+ .btn, .btn:focus {
+     background-color: transparent;
+ }
+
+ .btn:hover{
+     background-color: lightgrey;
+ }
+
+ .dropdown-content li>a {
+     color: black;
+     align-items: center;
+ }
+
+ .page-footer {
+     background-color: lightgrey;
+ }
+
+ .search-btn {
+     background-color: lightgrey;
+ }
