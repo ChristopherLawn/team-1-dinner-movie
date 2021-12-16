@@ -50,8 +50,6 @@ var getRestaurants = function (location) {
     tr_longitude +
     "&restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&limit=30&currency=USD&open_now=false&lunit=km&lang=en_US";
 
-  console.log(apiUrl);
-
   fetch(apiUrl, {
     method: "GET",
     headers: {
@@ -67,6 +65,7 @@ var getRestaurants = function (location) {
 
 //generate results in document
 var displayRestaurants = function (data) {
+  console.log(data);
   for (var i = 0; i < data.data.length; i++) {
     var container = document.createElement("div");
     restaurantEl.appendChild(container);
