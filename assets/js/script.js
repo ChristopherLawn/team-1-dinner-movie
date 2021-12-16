@@ -24,8 +24,9 @@ var getMovieData = function (movieTitle) {
     })
 }
 
-getMovieDetails = function (imdbID) {
-    console.log(`You clicked on the movie title with the id of ${imdbID}!`)
+movieClickHandler = function (event) {
+    var target = event.target
+    console.log(target)
 }
 
 var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
@@ -33,7 +34,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
     var movieContainer = document.createElement("div");
     movieContainer.setAttribute("title", movieTitle);
-    movieContainer.addEventListener("click", getMovieDetails);
+    movieContainer.setAttribute("imdbID", imdbID);
 
     var movieTitleEl = document.createElement("h3");
     movieTitleEl.textContent = movieTitle;
@@ -51,4 +52,6 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
 }
 
+var movieSectionCon = document.querySelector("#movie")
+movieSectionCon.addEventListener("click", movieClickHandler);
 getMovieData("Avengers")
