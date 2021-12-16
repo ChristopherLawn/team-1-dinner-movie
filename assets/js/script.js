@@ -1,3 +1,5 @@
+// DANIEL's CODE \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
 // get OMDB movie database data and movie poster
 // give user a search bar to search for movie titles
 // return movie poster along with synopsis and release year for EVERY result that api returns
@@ -24,9 +26,29 @@ var getMovieData = function (movieTitle) {
     })
 }
 
+var getMovieDetails = function (imdbIDnum) {
+    var apiKey = ""
+    fetch(`http://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                var plot = data.Plot;
+                var releaseDate = data.Released;
+                var actors = data.Actors;
+                var rottenTomatoesReview = data.Ratings[1];
+                var metacriticReview = data.Ratings[2];
+                var website = data.Website;
+
+                console.log(plot, releaseDate, actors, rottenTomatoesReview, metacriticReview, website)
+            })
+        } else {
+            console.log("response is not ok")
+        }
+    })
+}
+
 movieClickHandler = function (event) {
     var target = event.target
-    console.log(target)
+    getMovieDetails(target.parentNode.attributes.imdbID.value)
 }
 
 var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
@@ -55,3 +77,5 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 var movieSectionCon = document.querySelector("#movie")
 movieSectionCon.addEventListener("click", movieClickHandler);
 getMovieData("Avengers")
+
+// DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
