@@ -35,14 +35,14 @@
       <h1 class="header-title center-align">
         <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
       </h1>
-      <p>
+      <p class="flow-text">
         Select your favorite food style, the date of your date, and the zip code
         where you'll be hanging out. We'll find local restaurants and movie
         showtimes for you!
       </p>
     </header>
-
-    <div id="search-container" class="search row center-align">
+<div class="container">
+    <div id="search-container" class="search row">
       <div id="food-choice-container" class="food-choice col s4">
         <label id="food-label" class="food-header">Choose a Food Style:</label>
         <div name="food-dropdown" id="food-types" class="food-select">
@@ -71,26 +71,44 @@
 
       <div id="zip-container" class="zip-choice col s4">
         <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
-        <input type="text" id="zip" class="zip-select" pattern="[0-9]{5}"/>
+        <input type="text" id="zip" class="zip-select" pattern="[0-9]{5}" placeholder="00000" />
         <button type="submit" class="btn search-btn">Search</button>
       </div>
     </div>
-
+  </div>
     <div id="results-container" class="results row">
-      <div id="restaurant-results-container" class="restaurant-results col s6">
+      <div
+        id="restaurant-results-container"
+        class="restaurant-results col s12 m6"
+      >
         <label id="restaurant-label" class="restaurant-header"
           >Restaurant Options:</label
         >
-        <div
-          name="restaurant-list"
-          id="restaurant"
-          class="restaurant-select"
-        ></div>
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div
+              name="restaurant-list"
+              id="restaurant"
+              class="restaurant-select card-content"
+            ></div>
+            <!-- <div class="card-action">
+              <a href="#">This is a link to resterant website</a>
+            </div> -->
+          </div>
+        </div>
       </div>
 
-      <div id="movie-results-container" class="movie-results col s6">
+      <div id="movie-results-container" class="movie-results col s12 m6">
         <label id="movie-label" class="movie-header">Movie Options:</label>
-        <div name="movie-list" id="movie" class="movie-select"></div>
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div
+              name="movie-list"
+              id="movie"
+              class="movie-select card horizontal"
+            ></div>
+          </div>
+        </div>
       </div>
     </div>
 
