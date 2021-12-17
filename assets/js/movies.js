@@ -4,9 +4,11 @@
 // give user a search bar to search for movie titles
 // return movie poster along with synopsis and release year for EVERY result that api returns
 // If user clicks on one of these titles, will call api again and get more detailed results
+
+var movieSectionCon = document.querySelector("#movie")
 var getMovieData = function (movieTitle) {
-    var apiKey = ""
-    
+    var apiKey = "403f37df"
+
     fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${movieTitle}&type=movie&r=json`).then(function (response) {
         if (response.ok) {
             response.json().then(function(data) {
@@ -27,7 +29,7 @@ var getMovieData = function (movieTitle) {
 }
 
 var getMovieDetails = function (imdbIDnum) {
-    var apiKey = ""
+    var apiKey = "403f37df"
     fetch(`http://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
@@ -46,12 +48,8 @@ var getMovieDetails = function (imdbIDnum) {
     })
 }
 
-movieClickHandler = function (event) {
-    var target = event.target
-    getMovieDetails(target.parentNode.attributes.imdbID.value)
-}
-
 var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
+
     var movieSectionCon = document.querySelector("#movie")
 
     var movieContainer = document.createElement("div");
@@ -74,8 +72,30 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
 }
 
-var movieSectionCon = document.querySelector("#movie")
+var chooseMovieTitle = function() {
+    function removeChildren(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    removeChildren(movieSectionCon)
+
+    var titleArr = ["movie", "man", "avenger", "quest", "air", "love", "crazy", "plane", "woman", "child", "teenage", "home", "speech", "king", "ghost", "easy", "west", "fun", "sorrow", "son", "daughter", "car", "space", "star", "watch", "dollar", "money", "detective", "crime", "casino", "gun", "launch", "pink", "red", "blue", "yellow"]
+    
+    var randNum = Math.floor(Math.random() * titleArr.length);
+    console.log(randNum);
+    getMovieData(titleArr[randNum])
+}
+
+movieClickHandler = function (event) {
+    var target = event.target
+    getMovieDetails(target.parentNode.attributes.imdbID.value)
+}
+
 movieSectionCon.addEventListener("click", movieClickHandler);
-getMovieData("starship troopers")
+chooseMovieTitle();
+
+// setInterval(chooseMovieTitle, 30000)
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
