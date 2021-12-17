@@ -2,28 +2,37 @@
 
 //RESTAURANT API CALL
 var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
+var restaurantEl = document.querySelector("#restaurant"); //results container
 
-//containers
-var restaurantEl = document.querySelector("#restaurant");
+//click zipcode button
+var searchBtn = document.querySelector("#submit");
+
+searchBtn.addEventListener("click", function () {
+  var zipcode = document.querySelector("#zip");
+  if (zipcode.value) {
+    generateGeocode(zipcode.value);
+  }
+});
 
 //geocoding API call
-var geocodePlace = "New%20York%20City%20NY%20USA";
-var geocodeApiUrl =
-  "https://forward-reverse-geocoding.p.rapidapi.com/v1/search?q=" +
-  geocodePlace +
-  "&accept-language=en&polygon_threshold=0.0";
+var generateGeocode = function (zipcode) {
+  var geocodeApiUrl =
+    "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward?postalcode=" +
+    zipcode +
+    "&country=USA&accept-language=en&polygon_threshold=0.0";
 
-fetch(geocodeApiUrl, {
-  method: "GET",
-  headers: {
-    "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com",
-    "x-rapidapi-key": apiKey,
-  },
-}).then(function (response) {
-  response.json().then(function (location) {
-    getRestaurants(location);
+  fetch(geocodeApiUrl, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "forward-reverse-geocoding.p.rapidapi.com",
+      "x-rapidapi-key": "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a",
+    },
+  }).then(function (response) {
+    response.json().then(function (location) {
+      getRestaurants(location);
+    });
   });
-});
+};
 
 //use coordinates for travel advisor API
 var getRestaurants = function (location) {
@@ -58,6 +67,7 @@ var getRestaurants = function (location) {
 
 //generate results in document
 var displayRestaurants = function (data) {
+  console.log(data);
   for (var i = 0; i < data.data.length; i++) {
     var container = document.createElement("div");
     restaurantEl.appendChild(container);
@@ -80,10 +90,4 @@ for (var i = 0; i < dropdowns.length; i++){
 //     }
 //     var instanceDropdown1 = M.Dropdown.init(dropdown1, dropdownOptions);
 // });
-
-
-//NEED TO: filter results by cuisine type
-//response[i].cuisine (key value pair, need value)
-c093726309044f1a55faf454c13e5007ffaf2458
-
 
