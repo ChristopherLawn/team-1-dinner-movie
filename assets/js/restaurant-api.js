@@ -93,15 +93,35 @@ var displayRestaurants = function (data) {
   }
 
   var restaurantNames = function (event) {
+    //clear contents
+    restaurantEl.innerHTML = "";
+    //iterate and find matches by type
     for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
       if (
         restaurantArray[i].cuisine != undefined &&
         Object.keys(restaurantArray[i].cuisine).length != 0
       ) {
+        //generate elements
         if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
-          restaurantEl.innerHTML = restaurantArray[i].name;
+          //container
+          var restaurantContainer = document.createElement("div");
+          restaurantEl.appendChild(restaurantContainer);
+          restaurantContainer.setAttribute("class", "restaurant-result");
+          //name
+          var restaurantName = document.createElement("div");
+          restaurantContainer.appendChild(restaurantName);
+          restaurantName.innerHTML = restaurantArray[i].name;
+          //address
+          var restaurantAddress = document.createElement("div");
+          restaurantContainer.appendChild(restaurantAddress);
+          restaurantAddress.innerHTML = restaurantArray[i].address;
         }
       }
     }
+    // **return to categories button**
+    // var backBtn = document.createElement("button");
+    // restaurantEl.appendChild(backBtn);
+    // backBtn.textContent = "Back to categories";
+    // backBtn.addEventListener("click", );
   };
 };
