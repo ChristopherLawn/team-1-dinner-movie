@@ -58,30 +58,34 @@ var getRestaurants = function (location) {
     },
   }).then(function (response) {
     response.json().then(function (data) {
-      displayRestaurants(data);
+      displayCategories(data);
     });
   });
 };
 
 //generate results in document
-var displayRestaurants = function (data) {
+var displayCategories = function (data) {
   console.log(data);
+
+  //generate categories
   var categoryObj = data.filters.restaurant_tagcategory;
 
   for (var key in categoryObj) {
     if (data.filters.restaurant_tagcategory[key].label != "All") {
-      var categoryContainer = document.createElement("div");
-      restaurantEl.appendChild(categoryContainer);
-      categoryContainer.innerHTML =
+      var categoryBtn = document.createElement("button");
+      restaurantEl.appendChild(categoryBtn);
+      categoryBtn.textContent =
         data.filters.restaurant_tagcategory[key].label;
+      categoryBtn.addEventListener("click", function (event) {
+        displayRestaurants(event.target.textContent);
+      });
     }
-    // for (var i = 0; i < data.data.length; i++) {
-    //   var container = document.createElement("div");
-    //   restaurantEl.appendChild(container);
-    //   container.innerHTML = data.data[i].name + ", " + data.data[i].address;
   }
 };
 
-//NEED TO: filter results by cuisine type
+var displayRestaurants = function(style) {
+  //API call with style parameter
+  //replace buttons with restaurant list
+  //back button?
+}
 
-//response[i].cuisine (key value pair, need value)
