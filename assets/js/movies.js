@@ -5,9 +5,21 @@
 // return movie poster along with synopsis and release year for EVERY result that api returns
 // If user clicks on one of these titles, will call api again and get more detailed results
 
-var movieSectionCon = document.querySelector("#movie")
+var movieSectionCon = document.querySelector("#movie");
+var movieFormEl = document.querySelector("#search-form");
+var movieSearchInputEl = document.querySelector("#movie-search-input");
+var searchBool = false;
 var getMovieData = function (movieTitle) {
-    var apiKey = "403f37df"
+
+    function removeChildren(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    removeChildren(movieSectionCon)
+
+    var apiKey = "403f37df";
 
     fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${movieTitle}&type=movie&r=json`).then(function (response) {
         if (response.ok) {
@@ -29,7 +41,7 @@ var getMovieData = function (movieTitle) {
 }
 
 var getMovieDetails = function (imdbIDnum) {
-    var apiKey = "403f37df"
+    var apiKey = "403f37df";
     fetch(`http://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
@@ -73,29 +85,35 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 }
 
 var chooseMovieTitle = function() {
-    function removeChildren(parent) {
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
-    }
+    var searchedMovieTitle = movieSearchInputEl.value;
 
-    removeChildren(movieSectionCon)
-
-    var titleArr = ["movie", "man", "avenger", "quest", "air", "love", "crazy", "plane", "woman", "child", "teenage", "home", "speech", "king", "ghost", "easy", "west", "fun", "sorrow", "son", "daughter", "car", "space", "star", "watch", "dollar", "money", "detective", "crime", "casino", "gun", "launch", "pink", "red", "blue", "yellow"]
+    var titleArr = ["the", "movie", "man", "avenger", "quest", "air", "love", "crazy", "plane", "woman", "child", "teenage", "home", "speech", "king", "ghost", "easy", "west", "fun", "sorrow", "son", "daughter", "car", "space", "star", "watch", "dollar", "money", "detective", "crime", "casino", "gun", "launch", "pink", "red", "blue", "yellow", "dark", "lord", "american", "flower", "other", "walk", "into", "that", "animal"]
     
     var randNum = Math.floor(Math.random() * titleArr.length);
-    console.log(randNum);
-    getMovieData(titleArr[randNum])
+    
+    if (searchBool === true) {
+        getMovieData(searchedMovieTitle);
+    } else {
+        getMovieData(titleArr[randNum]);
+    }
 }
 
 movieClickHandler = function (event) {
+    event.preventDefault();
     var target = event.target
-    getMovieDetails(target.parentNode.attributes.imdbID.value)
+
+    if (target.parentNode.parentNode === movieSectionCon) {
+        getMovieDetails(target.parentNode.attributes.imdbID.value)
+    } else if (target === movieFormEl) {
+        searchBool = true;
+        chooseMovieTitle();
+    }
 }
 
 movieSectionCon.addEventListener("click", movieClickHandler);
+movieFormEl.addEventListener("submit", movieClickHandler);
 chooseMovieTitle();
 
-// setInterval(chooseMovieTitle, 30000)
+setInterval(chooseMovieTitle, 30000)
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

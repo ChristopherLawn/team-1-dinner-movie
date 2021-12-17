@@ -111,8 +111,11 @@
       <div id="movie-results-container" class="movie-results col s12 m6">
         <div id="search-container">
           <div id=search-input-container>
-            <label for="movie-search-input">Search Movie Options:</label>
-            <input type="text" id="movie-search-input" placeholder="Click here to search">
+            <form action="submit" id="search-form">
+              <label for="movie-search-input">Search Movie Options:</label>
+              <input type="text" id="movie-search-input" placeholder="Click here to search">
+              <button type="submit">Submit</button>
+            </form>
           </div>
         </div>
         <label id="movie-label" class="movie-header">Movie Options:</label>
