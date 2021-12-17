@@ -69,14 +69,16 @@ var displayRestaurants = function (data) {
   var categoryObj = data.filters.restaurant_tagcategory;
 
   for (var key in categoryObj) {
-    console.log(data.filters.restaurant_tagcategory[key].label)
-    var categoryContainer = document.createElement("div");
-    restaurantEl.appendChild(categoryContainer);
-    categoryContainer.innerHTML = data.filters.restaurant_tagcategory[key].label
-  // for (var i = 0; i < data.data.length; i++) {
-  //   var container = document.createElement("div");
-  //   restaurantEl.appendChild(container);
-  //   container.innerHTML = data.data[i].name + ", " + data.data[i].address;
+    if (data.filters.restaurant_tagcategory[key].label != "All") {
+      var categoryContainer = document.createElement("div");
+      restaurantEl.appendChild(categoryContainer);
+      categoryContainer.innerHTML =
+        data.filters.restaurant_tagcategory[key].label;
+    }
+    // for (var i = 0; i < data.data.length; i++) {
+    //   var container = document.createElement("div");
+    //   restaurantEl.appendChild(container);
+    //   container.innerHTML = data.data[i].name + ", " + data.data[i].address;
   }
 };
 
