@@ -1,7 +1,7 @@
 // initialize dropdown menu
-var dropdowns = document.querySelectorAll(".dropdown-trigger");
-for (var i = 0; i < dropdowns.length; i++) {
-  M.Dropdown.init(dropdowns[i], "right");
+var dropdowns = document.querySelectorAll('.dropdown-trigger')
+for (var i = 0; i < dropdowns.length; i++){
+    M.Dropdown.init(dropdowns[i]);
 }
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -12,3 +12,4 @@ for (var i = 0; i < dropdowns.length; i++) {
 //     }
 //     var instanceDropdown1 = M.Dropdown.init(dropdown1, dropdownOptions);
 // });
+
