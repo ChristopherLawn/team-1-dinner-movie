@@ -76,6 +76,6 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
 var movieSectionCon = document.querySelector("#movie")
 movieSectionCon.addEventListener("click", movieClickHandler);
-getMovieData("Avengers")
+getMovieData("starship troopers")
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
