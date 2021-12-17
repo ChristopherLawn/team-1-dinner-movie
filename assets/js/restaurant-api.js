@@ -48,7 +48,7 @@ var getRestaurants = function (location) {
     bl_longitude +
     "&tr_longitude=" +
     tr_longitude +
-    "&restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&limit=30&currency=USD&open_now=false&lunit=km&lang=en_US";
+    "&restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&limit=30&currency=USD&open_now=true&lunit=mi&lang=en_US";
 
   fetch(apiUrl, {
     method: "GET",
@@ -65,27 +65,29 @@ var getRestaurants = function (location) {
 
 //generate results in document
 var displayCategories = function (data) {
-  console.log(data);
+  var restaurantArray = data.data; //object
 
   //generate categories
-  var categoryObj = data.filters.restaurant_tagcategory;
-
-  for (var key in categoryObj) {
-    if (data.filters.restaurant_tagcategory[key].label != "All") {
-      var categoryBtn = document.createElement("button");
-      restaurantEl.appendChild(categoryBtn);
-      categoryBtn.textContent =
-        data.filters.restaurant_tagcategory[key].label;
-      categoryBtn.addEventListener("click", function (event) {
-        displayRestaurants(event.target.textContent);
-      });
+  var categoriesArray = [];
+  for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
+    if (
+      restaurantArray[i].cuisine != undefined &&
+      Object.keys(restaurantArray[i].cuisine).length != 0
+    ) {
+      var categories = restaurantArray[i].cuisine[0].name;
+      if (categoriesArray.includes(categories) === false) {
+        categoriesArray.push(categories);
+      }
     }
   }
+
+  //category buttons
+  for (var i = 0; i < categoriesArray.length; i++) {
+    var categoryBtn = document.createElement("button");
+    restaurantEl.appendChild(categoryBtn);
+    categoryBtn.textContent = categoriesArray[i];
+    categoryBtn.addEventListener("click", function (event) {
+      console.log("clicked!");
+    });
+  }
 };
-
-var displayRestaurants = function(style) {
-  //API call with style parameter
-  //replace buttons with restaurant list
-  //back button?
-}
-
