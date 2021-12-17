@@ -58,14 +58,15 @@ var getRestaurants = function (location) {
     },
   }).then(function (response) {
     response.json().then(function (data) {
-      displayCategories(data);
+      displayRestaurants(data);
     });
   });
 };
 
 //generate results in document
-var displayCategories = function (data) {
+var displayRestaurants = function (data) {
   var restaurantArray = data.data; //object
+  console.log(restaurantArray);
 
   //generate categories
   var categoriesArray = [];
@@ -87,7 +88,20 @@ var displayCategories = function (data) {
     restaurantEl.appendChild(categoryBtn);
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
-      console.log("clicked!");
+      restaurantNames(event);
     });
   }
+
+  var restaurantNames = function (event) {
+    for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
+      if (
+        restaurantArray[i].cuisine != undefined &&
+        Object.keys(restaurantArray[i].cuisine).length != 0
+      ) {
+        if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
+          restaurantEl.innerHTML = restaurantArray[i].name;
+        }
+      }
+    }
+  };
 };
