@@ -114,6 +114,6 @@ movieSectionCon.addEventListener("click", movieClickHandler);
 movieFormEl.addEventListener("submit", movieClickHandler);
 chooseMovieTitle();
 
-setInterval(chooseMovieTitle, 30000)
+// setInterval(chooseMovieTitle, 30000)
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
