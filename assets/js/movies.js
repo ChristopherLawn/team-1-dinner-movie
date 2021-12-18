@@ -89,7 +89,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 var chooseMovieTitle = function() {
     var searchedMovieTitle = movieSearchInputEl.value;
 
-    var titleArr = ["the", "movie", "man", "avenger", "quest", "air", "love", "crazy", "plane", "woman", "child", "teenage", "home", "speech", "king", "ghost", "easy", "west", "fun", "sorrow", "son", "daughter", "car", "space", "star", "watch", "dollar", "money", "detective", "crime", "casino", "gun", "launch", "pink", "red", "blue", "yellow", "dark", "lord", "american", "flower", "other", "walk", "into", "that", "animal"]
+    var titleArr = ["the", "movie", "man", "avengers", "quest", "air", "love", "crazy", "plane", "woman", "child", "teenage", "home", "speech", "king", "ghost", "easy", "west", "fun", "sorrow", "son", "daughter", "car", "space", "star", "watch", "dollar", "money", "detective", "crime", "casino", "gun", "launch", "pink", "red", "blue", "yellow", "dark", "lord", "american", "flower", "other", "walk", "into", "that", "animal"]
     
     var randNum = Math.floor(Math.random() * titleArr.length);
     
