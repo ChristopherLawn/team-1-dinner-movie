@@ -29,7 +29,7 @@
       <h1 class="header-title center-align">
         <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
       </h1>
-      <p class="flow-text">
+      <p class="flow-text center-align justify-content-center">
         Select your favorite food style, the date of your date, and the zip code
         where you'll be hanging out. We'll find local restaurants and movie
         showtimes for you!
@@ -37,14 +37,13 @@
     </header>
     <div class="container">
       <div id="search-container" class="search row">
-        <div id="food-choice-container" class="food-choice col s4">
+        <div id="food-choice-container" class="food-choice col s12 m4 l4">
           <label id="food-label" class="food-header"
             >Choose a Food Style:</label
           >
-          <div name="food-dropdown" id="food-types" class="food-select">
-            <!--  -->
+          <div>
             <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
-              >Please choose a cuisine type</a
+              >Please Choose Food</a
             >
             <ul id="dropdown1" class="dropdown-content">
               <li><a href="#!">American</a></li>
@@ -60,12 +59,12 @@
           </div>
         </div>
 
-        <div id="date-container" class="date-choice col s4">
+        <div id="date-container" class="date-choice col s12 m4 l4">
           <label id="date-label" class="date-header">Choose a Date:</label>
           <input type="date" id="date" class="date-select" />
         </div>
 
-        <div id="zip-container" class="zip-choice col s4">
+        <div id="zip-container" class="zip-choice col s12 m4 l4">
           <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
           <input
             type="text"
@@ -104,10 +103,14 @@
 
       <div id="movie-results-container" class="movie-results col s12 m6">
         <div id="search-container">
-          <div id=search-input-container>
+          <div id="search-input-container">
             <form action="submit" id="search-form">
               <label for="movie-search-input">Search Movie Options:</label>
-              <input type="text" id="movie-search-input" placeholder="Click here to search">
+              <input
+                type="text"
+                id="movie-search-input"
+                placeholder="Click here to search"
+              />
               <button type="submit">Submit</button>
             </form>
           </div>

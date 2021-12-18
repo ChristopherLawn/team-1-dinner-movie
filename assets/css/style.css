@@ -34,6 +34,17 @@
      align-items: center;
  }
 
+a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+ /* .dropdown-trigger, .food-select{
+     width: 100%;
+     display: flex;
+ } */
+
  .date-select:hover, .zip-select:hover {
    color: var(--orange);
  }
@@ -49,4 +60,11 @@
 
  .search-btn {
      background-color: var(--orange);
+ }
+
+ .card-stacked {
+     width: 100%;
+     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
  }
