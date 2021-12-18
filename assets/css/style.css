@@ -1,0 +1,52 @@
+
+/* based of of groovy color palette */
+:root {
+    --dark: #171219;
+    --blue: #225560;
+    --yellow: #EDF060;
+    --orange: #F0803C;
+    --maroon: #310D20;
+}
+
+
+/* .dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ } */
+
+ .food-select {
+    width: max-content !important;
+    height:auto;
+    padding-top: 7px;
+ }
+
+ .btn, .btn:focus {
+     background-color: transparent;
+     color: var(--maroon);
+ }
+
+ .btn:hover{
+     background-color: var(--orange);
+ }
+
+ .dropdown-content li>a {
+     color: black;
+     align-items: center;
+ }
+
+ .date-select:hover, .zip-select:hover {
+   color: var(--orange);
+ }
+ 
+ ::-webkit-input-placeholder:hover { /* Chrome/Opera/Safari */
+    color: var(--orange);
+    font-weight: bolder;
+  }
+
+ .page-footer {
+     background-color: var(--blue);
+ }
+
+ .search-btn {
+     background-color: var(--orange);
+ }

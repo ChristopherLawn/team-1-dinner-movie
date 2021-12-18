@@ -1,82 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Chew'N'View!</title>
-</head>
+    <title>Chew & View!</title>
+  </head>
 
-<body>
+  <body>
     <header id="header" class="header-class">
-        <h1 class="header-title"><i class="fas fa-utensils"></i>  Chew'N'View!  <i class="fas fa-film"></i></h1>
-        <p>Select your favorite food style, the date of your date, and the zip code where you'll be hanging out. We'll find local restaurants and movie showtimes for you!</p>
+      <h1 class="header-title center-align">
+        <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
+      </h1>
+      <p class="flow-text">
+        Select your favorite food style, the date of your date, and the zip code
+        where you'll be hanging out. We'll find local restaurants and movie
+        showtimes for you!
+      </p>
     </header>
+    <div class="container">
+      <div id="search-container" class="search row">
+        <div id="food-choice-container" class="food-choice col s4">
+          <label id="food-label" class="food-header"
+            >Choose a Food Style:</label
+          >
+          <div name="food-dropdown" id="food-types" class="food-select">
+            <!--  -->
+            <a class="dropdown-trigger btn" href="#" data-target="dropdown1"
+              >Please choose a cuisine type</a
+            >
+            <ul id="dropdown1" class="dropdown-content">
+              <li><a href="#!">American</a></li>
+              <li><a href="#!">Breakfast</a></li>
+              <li><a href="#!">Chinese</a></li>
+              <li><a href="#!">Indian</a></li>
+              <li><a href="#!">Italian</a></li>
+              <li><a href="#!">Korean</a></li>
+              <li><a href="#!">Mexican</a></li>
+              <li><a href="#!">Thai</a></li>
+              <li><a href="#!">Surprise Me!</a></li>
+            </ul>
+          </div>
+        </div>
 
-    <div id="search-container" class="search">
+        <div id="date-container" class="date-choice col s4">
+          <label id="date-label" class="date-header">Choose a Date:</label>
+          <input type="date" id="date" class="date-select" />
+        </div>
 
-            <div id="food-choice-container" class="food-choice">
-                <label id="food-label" class="food-header">Choose a Food Style:</label>
-                <select name="food-dropdown" id="food-types" class="food-select">
-                    <option value="">--Please choose a cuisine type--</option>
-                    <option value="american">American</option>
-                    <option value="breakfast">Breakfast</option>
-                    <option value="chinese">Chinese</option>
-                    <option value="indian">Indian</option>
-                    <option value="italian">Italian</option>
-                    <option value="korean">Korean</option>
-                    <option value="mexican">Mexican</option>
-                    <option value="thai">Thai</option>
-                    <option value="surprise">Surprise Me!</option>
-                </select>
-            </div>
+        <div id="zip-container" class="zip-choice col s4">
+          <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
+          <input
+            type="text"
+            id="zip"
+            class="zip-select"
+            pattern="[0-9]{5}"
+            placeholder="00000"
+          />
+          <button type="submit" id="submit" class="btn search-btn">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="results-container" class="results row">
+      <div
+        id="restaurant-results-container"
+        class="restaurant-results col s12 m6"
+      >
+        <label id="restaurant-label" class="restaurant-header"
+          >Restaurant Options:</label
+        >
+        <div class="card horizontal">
+          <div class="card-stacked">
+            <div
+              name="restaurant-list"
+              id="restaurant"
+              class="restaurant-select card-content"
+            ></div>
+            <!-- <div class="card-action">
+              <a href="#">This is a link to resterant website</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
 
-            <div id="date-container" class="date-choice">
-                <label id="date-label" class="date-header">Choose a Date:</label>
-                <input type="date" id="date" class="date-select"/>
-            </div>
-            
-            <div id="zip-container" class="zip-choice">
-                <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
-                <input type="text" id="zip" class="zip-select">
-                <button type="submit" class="btn">Search</button>
-            </div>
+      <div id="movie-results-container" class="movie-results col s12 m6">
+        <div id="search-container">
+          <div id=search-input-container>
+            <form action="submit" id="search-form">
+              <label for="movie-search-input">Search Movie Options:</label>
+              <input type="text" id="movie-search-input" placeholder="Click here to search">
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <label id="movie-label" class="movie-header">Movie Options:</label>
+        <div class="container">
+          <div class="container">
+              <div
+                name="movie-list"
+                id="movie"
+                class="movie-select"
+              ></div>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel">
+        <a class="carousel-item" href="#one!"><img src="./assets/images/food1.jpeg"></a>
+        <a class="carousel-item" href="#two!"><img src="./assets/images/food2.jpeg"></a>
+        <a class="carousel-item" href="#three!"><img src="./assets/images/food3.jpeg"></a>
+        <a class="carousel-item" href="#four!"><img src="./assets/images/food4.jpeg"></a>
+        <a class="carousel-item" href="#five!"><img src="./assets/images/food5.jpeg"></a>
+      </div>
+          
     </div>
 
-    <div id="results-container" class="results">
-
-        <div id="restaurant-results-container" class="restaurant-results">
-            <label id="restaurant-label" class="restaurant-header">Restaurant Options:</label>
-            <div name="restaurant-list" id="restaurant" class="restaurant-select">
-
-            </div>
-        </div>
-
-        <div id="movie-results-container" class="movie-results">
-            <label id="movie-label" class="movie-header">Movie Options:</label>
-            <div name="movie-list" id="movie" class="movie-select">
-
-            </div>
-        </div>
-
-    </div>
-
-    <footer id="footer" class="footer-class">
-        <h2>❤️ Made with love by Team 1</h2>
-        <div>
-            &copy; 2021 Chew & View, Inc.
-        </div>
+    <footer id="footer" class="page-footer">
+      <div class="container">
+        <h5 class="white-text">❤️ Made with love by Team 1</h5>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">&copy; 2021 Chew & View, Inc.</div>
+      </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+    <script src="./assets/js/stylize.js"></script>
+    <script src="./assets/js/restaurant-api.js"></script>
+    <script src="./assets/js/movies.js"></script>
+  </body>
 </html>
