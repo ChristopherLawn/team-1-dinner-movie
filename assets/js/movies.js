@@ -65,6 +65,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     var movieSectionCon = document.querySelector("#movie")
 
     var movieContainer = document.createElement("div");
+    movieContainer.className = "card card-stacked"
     movieContainer.setAttribute("title", movieTitle);
     movieContainer.setAttribute("imdbID", imdbID);
 
