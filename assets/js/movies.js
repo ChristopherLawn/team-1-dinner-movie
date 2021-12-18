@@ -61,11 +61,12 @@ var getMovieDetails = function (imdbIDnum) {
 }
 
 var displayMovieDetails = function (plot, date, actorlist, review1, review2, website) {
+
     var modalEl = document.querySelector("#modal1")
     modalEl.innerHTML = "<div id='modal1' class='modal'></div>";
 
     var modalContent = document.createElement("div");
-    modalContent.innerHTML = `<div class="modal-content"><h4>Movie Details</h4><p>${plot}</p></div>`;
+    modalContent.innerHTML = `<div class="modal-content"><h4>Movie Details</h4><p>${plot}</p><p>Actors: ${actorlist}</p><p>Rotten Tomatoes: ${review1.Value}</p><p>Metacritic: ${review2.Value}</p><p>Release Date: ${date}</p></div>`;
     modalEl.appendChild(modalContent);
 
     movieSectionCon.appendChild(modalEl);
@@ -120,11 +121,8 @@ var chooseMovieTitle = function() {
 movieClickHandler = function (event) {
     event.preventDefault();
     var target = event.target
-    console.log(target.parentNode.parentNode.parentNode)
-    console.log(movieSectionCon)
 
     if (target.parentNode.parentNode.parentNode === movieSectionCon) {
-        console.log(target.attributes.imdbID.value)
         getMovieDetails(target.attributes.imdbID.value)
     } else if (target === movieFormEl) {
         searchBool = true;
@@ -136,6 +134,6 @@ movieSectionCon.addEventListener("click", movieClickHandler);
 movieFormEl.addEventListener("submit", movieClickHandler);
 chooseMovieTitle();
 
-// setInterval(chooseMovieTitle, 30000)
+setInterval(chooseMovieTitle, 30000)
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
