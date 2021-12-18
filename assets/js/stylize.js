@@ -11,6 +11,11 @@ for (var i = 0; i < dropdowns.length; i++){
     M.Dropdown.init(dropdowns[i]);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     var dropdown1 = document.querySelector('.simple-dropdown');
 //     var dropdownOptions = {
