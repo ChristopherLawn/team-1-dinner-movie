@@ -65,6 +65,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     var movieSectionCon = document.querySelector("#movie")
 
     var movieContainer = document.createElement("div");
+    movieContainer.className = "card card-stacked"
     movieContainer.setAttribute("title", movieTitle);
     movieContainer.setAttribute("imdbID", imdbID);
 
@@ -114,6 +115,6 @@ movieSectionCon.addEventListener("click", movieClickHandler);
 movieFormEl.addEventListener("submit", movieClickHandler);
 chooseMovieTitle();
 
-setInterval(chooseMovieTitle, 30000)
+// setInterval(chooseMovieTitle, 30000)
 
 // DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
