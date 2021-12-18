@@ -43,6 +43,24 @@
     font-weight: bolder;
   }
 
+  #movie-card-con {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .movie-cardy {
+      width: 40%
+  }
+
+  .movie-cardy h3 {
+      font-size: 2vw;
+  }
+
+  .movie-poster-img {
+      width: 100%;
+      height: auto;
+  }
+
  .page-footer {
      background-color: var(--blue);
  }

@@ -65,7 +65,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     var movieSectionCon = document.querySelector("#movie")
 
     var movieContainer = document.createElement("div");
-    movieContainer.className = "card card-stacked"
+    movieContainer.className = "card card-stacked movie-cardy"
     movieContainer.setAttribute("title", movieTitle);
     movieContainer.setAttribute("imdbID", imdbID);
 
@@ -78,6 +78,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     movieContainer.appendChild(movieYearEl);
 
     var moviePosterEl = document.createElement("img");
+    moviePosterEl.className = "movie-poster-img"
     moviePosterEl.setAttribute("src", posterUrl);
     movieContainer.appendChild(moviePosterEl)
 
