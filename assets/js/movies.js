@@ -21,7 +21,7 @@ var getMovieData = function (movieTitle) {
 
     var apiKey = "403f37df";
 
-    fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${movieTitle}&type=movie&r=json`).then(function (response) {
+    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${movieTitle}&type=movie&r=json`).then(function (response) {
         if (response.ok) {
             response.json().then(function(data) {
                 var dataArr = data.Search
@@ -42,7 +42,7 @@ var getMovieData = function (movieTitle) {
 
 var getMovieDetails = function (imdbIDnum) {
     var apiKey = "403f37df";
-    fetch(`http://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
+    fetch(`https://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
                 var plot = data.Plot;
