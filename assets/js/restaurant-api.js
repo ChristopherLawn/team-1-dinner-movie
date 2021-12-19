@@ -1,3 +1,20 @@
+var zipSearchContainerEl = document.querySelector("#zip-list");
+var zipCodeArray;
+if (localStorage.getItem("zip-list")) {
+  zipCodeArray = JSON.parse(localStorage.getItem("zip-list"));
+  zipCodeArray.forEach(element => {
+      var zipEl = document.createElement("li");
+      zipEl.classList = "btn btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.textContent = element;
+      zipEl.addEventListener("click", function(event) {
+      generateGeocode(event.target.textContent)
+      });
+      zipSearchContainerEl.appendChild(zipEl);
+  });
+} else {
+  zipCodeArray = [];
+};
+
 //RESTAURANT API CALL
 var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
 var restaurantEl = document.querySelector("#restaurant"); //results container
@@ -9,8 +26,35 @@ searchBtn.addEventListener("click", function () {
   var zipcode = document.querySelector("#zip");
   if (zipcode.value) {
     generateGeocode(zipcode.value);
+    displayZips(zipCodeArray);
+
+    zipcode.value = "";
+  } else {
+      alert("Please enter a zip code");
   }
 });
+
+var displayZips = function() {
+  let inArray = false;
+  for(let i = 0; i < zipCodeArray.length; i++){
+      if(zipCodeArray[i] === zipcode.value){
+          inArray = true;
+      }
+  }
+  if(!inArray){
+      zipCodeArray.push(zipcode.value);
+      var zipEl = document.createElement("li");
+      zipEl.classList = "btn btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.textContent = zipcode.value;
+      zipEl.addEventListener("click", function(event) {
+      generateGeocode(event.target.textContent)
+      });
+      zipSearchContainerEl.appendChild(zipEl);
+      // localStorage.setItem("zip-code-list", JSON.stringify(zipCodeArray));
+      console.log(zipEl);
+      console.log(zipCodeArray);
+  }
+}
 
 //geocoding API call
 var generateGeocode = function (zipcode) {
