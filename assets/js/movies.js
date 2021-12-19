@@ -74,14 +74,14 @@ var displayMovieDetails = function (plot, date, actorlist, review1, review2, web
 
 var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
-    var movieSectionCon = document.querySelector("#movie")
+    var movieSectionCon = document.querySelector("#movie");
 
     var movieContainer = document.createElement("div");
     movieContainer.className = "card card-stacked movie-cardy";
 
     var movieTitleEl = document.createElement("h3");
     movieTitleEl.textContent = movieTitle;
-    movieTitleEl.className = "activator"
+    movieTitleEl.className = "activator";
     movieContainer.appendChild(movieTitleEl);
 
     var movieYearEl = document.createElement("h4");
@@ -89,8 +89,8 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     movieContainer.appendChild(movieYearEl);
 
     var modalButtonEl = document.createElement("a");
-    modalButtonEl.className = "modal-trigger"
-    modalButtonEl.setAttribute("href", "#modal1")
+    modalButtonEl.className = "modal-trigger";
+    modalButtonEl.setAttribute("href", "#modal1");
     movieContainer.appendChild(modalButtonEl);
 
     var moviePosterEl = document.createElement("img");
