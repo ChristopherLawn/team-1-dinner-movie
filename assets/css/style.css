@@ -98,10 +98,3 @@ a {
  .search-btn {
      background-color: var(--orange);
  }
-
- .card-stacked {
-     width: 100%;
-     text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
- }
