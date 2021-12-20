@@ -1,10 +1,11 @@
 var zipSearchContainerEl = document.querySelector("#zip-list");
+var localStorageGetZipCodes = "zip-code-list"
 var zipCodeArray;
-if (localStorage.getItem("zip-list")) {
-  zipCodeArray = JSON.parse(localStorage.getItem("zip-list"));
+if (localStorage.getItem(localStorageGetZipCodes)) {
+  zipCodeArray = JSON.parse(localStorage.getItem(localStorageGetZipCodes)) || [];
   zipCodeArray.forEach(element => {
       var zipEl = document.createElement("li");
-      zipEl.classList = "btn btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.classList = "zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
       zipEl.textContent = element;
       zipEl.addEventListener("click", function(event) {
       generateGeocode(event.target.textContent)
@@ -26,7 +27,7 @@ searchBtn.addEventListener("click", function () {
   var zipcode = document.querySelector("#zip");
   if (zipcode.value) {
     generateGeocode(zipcode.value);
-    displayZips(zipCodeArray);
+    displayZips(zipcode);
 
     zipcode.value = "";
   } else {
@@ -34,7 +35,13 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
-var displayZips = function() {
+var displayZips = function(zipcode) {
+    var hideZipContainer = document.querySelector("#zip-search-container");
+        hideZipContainer.classList.remove("hide");
+    var hideZipHistoryHeader = document.querySelector("#zip-search-");
+        hideZipHistoryHeader.classList.remove("hide");
+    // var hideCityContainer = document.querySelector("#clear");
+    //     hideCityContainer.classList.remove("hide");
   let inArray = false;
   for(let i = 0; i < zipCodeArray.length; i++){
       if(zipCodeArray[i] === zipcode.value){
@@ -44,17 +51,34 @@ var displayZips = function() {
   if(!inArray){
       zipCodeArray.push(zipcode.value);
       var zipEl = document.createElement("li");
-      zipEl.classList = "btn btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
       zipEl.textContent = zipcode.value;
       zipEl.addEventListener("click", function(event) {
       generateGeocode(event.target.textContent)
       });
       zipSearchContainerEl.appendChild(zipEl);
-      // localStorage.setItem("zip-code-list", JSON.stringify(zipCodeArray));
+      localStorage.setItem(localStorageGetZipCodes, JSON.stringify(zipCodeArray));
       console.log(zipEl);
       console.log(zipCodeArray);
   }
 }
+
+// 'Clear Search History' functions
+var clearSearch = document.querySelector("#clear");
+
+var clearHistory = function() {
+  localStorage.clear();
+  var hideZipContainer = document.querySelector("#zip-search-container");
+      hideZipContainer.classList.add("hide");
+  // var hideZipHeader = document.querySelector("zip-search-header");
+  //     hideZipHeader.classList.add("hide");
+  var hideClearButton = document.getElementById("#clear");
+      hideClearButton.classList.add("hide");
+  document.location.reload(true);
+}
+
+// 'Clear Search History' button
+clearSearch.addEventListener("click", clearHistory);
 
 //geocoding API call
 var generateGeocode = function (zipcode) {

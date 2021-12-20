@@ -1,5 +1,5 @@
 
-/* based of of groovy color palette */
+/* based off of groovy color palette */
 :root {
     --dark: #171219;
     --blue: #225560;
@@ -20,14 +20,35 @@
     padding-top: 7px;
  }
 
- .btn, .btn:focus {
-     background-color: transparent;
+ .search-btn, .btn:focus {
+     background-color: var(--orange);
      color: var(--maroon);
  }
 
- .btn:hover{
-     background-color: var(--orange);
+ .search-btn:hover{
+    background-color: var(--maroon);
+    color: var(--orange);
  }
+
+ .clear-btn, .clear-btn:focus {
+    background-color: var(--blue);
+    color: var(--yellow);
+}
+
+.clear-btn:hover{
+    background-color: var(--yellow);
+    color: var(--blue);
+}
+
+.zip-btn, .zip-btn:focus {
+    background-color: var(--yellow);
+    color: var(--dark);
+}
+
+.zip-btn:hover {
+    background-color: var(--dark);
+    color: var(--yellow);
+}
 
  .dropdown-content li>a {
      color: black;
@@ -58,13 +79,17 @@ a {
      background-color: var(--blue);
  }
 
- .search-btn {
+ /* .search-btn {
      background-color: var(--orange);
- }
+ } */
 
  .card-stacked {
      width: 100%;
      text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+ }
+
+ .hide {
+     display: none;
  }
