@@ -14,6 +14,20 @@
     height:auto !important;
  } */
 
+ .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
  .food-select {
     width: max-content !important;
     height:auto;
@@ -34,6 +48,17 @@
      align-items: center;
  }
 
+a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+ /* .dropdown-trigger, .food-select{
+     width: 100%;
+     display: flex;
+ } */
+
  .date-select:hover, .zip-select:hover {
    color: var(--orange);
  }
@@ -41,6 +66,29 @@
  ::-webkit-input-placeholder:hover { /* Chrome/Opera/Safari */
     color: var(--orange);
     font-weight: bolder;
+  }
+
+  #movie-card-con {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: space-around;
+  }
+
+  .movie-cardy {
+      width: 40%;
+      padding: 0, 10px;
+  }
+
+  .movie-cardy h3 {
+      font-size: 1.5vw;
+      margin: 0 10px;
+  }
+
+  .movie-poster-img {
+      width: 100%;
+      height: auto;
   }
 
  .page-footer {
