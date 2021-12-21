@@ -5,7 +5,7 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
   zipCodeArray = JSON.parse(localStorage.getItem(localStorageGetZipCodes)) || [];
   zipCodeArray.forEach(element => {
       var zipEl = document.createElement("li");
-      zipEl.classList = "zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
       zipEl.textContent = element;
       zipEl.addEventListener("click", function(event) {
       generateGeocode(event.target.textContent)
@@ -17,7 +17,7 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
 };
 
 //RESTAURANT API CALL
-var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
+var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
 var restaurantEl = document.querySelector("#restaurant"); //results container
 
 //click zipcode button
@@ -36,10 +36,10 @@ searchBtn.addEventListener("click", function () {
 });
 
 var displayZips = function(zipcode) {
-    var hideZipContainer = document.querySelector("#zip-search-container");
-        hideZipContainer.classList.remove("hide");
-    var hideZipHistoryHeader = document.querySelector("#zip-search-");
-        hideZipHistoryHeader.classList.remove("hide");
+    // var hideZipContainer = document.querySelector("#zip-search-container");
+    //     hideZipContainer.classList.remove("hide");
+    // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
+    //     hideZipHistoryHeader.classList.remove("hide");
     // var hideCityContainer = document.querySelector("#clear");
     //     hideCityContainer.classList.remove("hide");
   let inArray = false;
@@ -68,12 +68,12 @@ var clearSearch = document.querySelector("#clear");
 
 var clearHistory = function() {
   localStorage.clear();
-  var hideZipContainer = document.querySelector("#zip-search-container");
-      hideZipContainer.classList.add("hide");
+  // var hideZipContainer = document.querySelector("zip-search-choice");
+  //     hideZipContainer.classList.add("hide");
   // var hideZipHeader = document.querySelector("zip-search-header");
   //     hideZipHeader.classList.add("hide");
-  var hideClearButton = document.getElementById("#clear");
-      hideClearButton.classList.add("hide");
+  // var hideClearButton = document.getElementById("#clear");
+  //     hideClearButton.classList.add("hide");
   document.location.reload(true);
 }
 
