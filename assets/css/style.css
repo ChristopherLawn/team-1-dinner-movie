@@ -75,7 +75,7 @@ a {
       justify-content: space-between;
       align-items: space-around;
   }
-
+ 
   .movie-cardy {
       width: 40%;
       padding: 0, 10px;
@@ -98,3 +98,10 @@ a {
  .search-btn {
      background-color: var(--orange);
  }
+
+ @media screen and (max-width: 575px) {
+    .movie-select {
+      justify-content: center;
+    }
+  }
+  
