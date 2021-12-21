@@ -1,19 +1,22 @@
 //RESTAURANT API CALL
-var apiKey = "c449a8d1b1mshcbe3ee310732590p115c8ejsn3b8d1f48601a";
+var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
 var restaurantEl = document.querySelector("#restaurant"); //results container
 
 //click zipcode button
 var searchBtn = document.querySelector("#submit");
+var zipcode = document.querySelector("#zip");
 
-searchBtn.addEventListener("click", function () {
-  var zipcode = document.querySelector("#zip");
-  if (zipcode.value) {
-    generateGeocode(zipcode.value);
-  }
-});
+searchClickHandler = function (event) {
+  event.preventDefault();
+  restaurantEl.innerHTML = "";
+  generateGeocode(zipcode.value);
+};
+
+searchBtn.addEventListener("click", searchClickHandler);
 
 //geocoding API call
-var generateGeocode = function (zipcode) {
+generateGeocode = function (zipcode) {
+  //forward geocoding
   var geocodeApiUrl =
     "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward?postalcode=" +
     zipcode +
@@ -33,7 +36,7 @@ var generateGeocode = function (zipcode) {
 };
 
 //use coordinates for travel advisor API
-var getRestaurants = function (location) {
+getRestaurants = function (location) {
   var bl_latitude = location[0].boundingbox[0]; //bottom left latitude
   var tr_latitude = location[0].boundingbox[1]; //top right latitude
   var bl_longitude = location[0].boundingbox[2]; //bottom left longitude
@@ -64,9 +67,8 @@ var getRestaurants = function (location) {
 };
 
 //generate results in document
-var displayRestaurants = function (data) {
+displayRestaurants = function (data) {
   var restaurantArray = data.data; //object
-  console.log(restaurantArray);
 
   //generate categories
   var categoriesArray = [];
@@ -92,7 +94,7 @@ var displayRestaurants = function (data) {
     });
   }
 
-  var restaurantNames = function (event) {
+  restaurantNames = function (event) {
     //clear contents
     restaurantEl.innerHTML = "";
     //iterate and find matches by type
