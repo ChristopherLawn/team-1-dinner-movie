@@ -1,5 +1,5 @@
 
-/* based of of groovy color palette */
+/* based off of groovy color palette */
 :root {
     --dark: #171219;
     --blue: #225560;
@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: fit-content;
   }
   
   .column {
@@ -34,14 +34,35 @@
     padding-top: 7px;
  }
 
- .btn, .btn:focus {
-     background-color: transparent;
+ .search-btn, .btn:focus {
+     background-color: var(--orange);
      color: var(--maroon);
  }
 
- .btn:hover{
-     background-color: var(--orange);
+ .search-btn:hover{
+    background-color: var(--maroon);
+    color: var(--orange);
  }
+
+ .clear-btn, .clear-btn:focus {
+    background-color: var(--blue);
+    color: var(--yellow);
+}
+
+.clear-btn:hover{
+    background-color: var(--yellow);
+    color: var(--blue);
+}
+
+.zip-btn, .zip-btn:focus {
+    background-color: var(--yellow);
+    color: var(--dark);
+}
+
+.zip-btn:hover {
+    background-color: var(--dark);
+    color: var(--yellow);
+}
 
  .dropdown-content li>a {
      color: black;
@@ -75,7 +96,7 @@ a {
       justify-content: space-between;
       align-items: space-around;
   }
-
+ 
   .movie-cardy {
       width: 40%;
       padding: 0, 10px;
@@ -98,3 +119,13 @@ a {
  .search-btn {
      background-color: var(--orange);
  }
+
+ .hide {
+     display: none;
+ }
+ @media screen and (max-width: 575px) {
+    .movie-select {
+      justify-content: center;
+    }
+  }
+  

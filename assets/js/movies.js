@@ -77,7 +77,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
     var movieSectionCon = document.querySelector("#movie");
 
     var movieContainer = document.createElement("div");
-    movieContainer.className = "card card-stacked movie-cardy";
+    movieContainer.className = "card card-stacked movie-cardy hoverable";
 
     var movieTitleEl = document.createElement("h3");
     movieTitleEl.textContent = movieTitle;
