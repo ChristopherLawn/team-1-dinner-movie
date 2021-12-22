@@ -90,27 +90,33 @@ a {
   }
 
   #movie-card-con {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto;
-      justify-content: space-between;
-      align-items: space-around;
-  }
- 
-  .movie-cardy {
-      width: 40%;
-      padding: 0, 10px;
-  }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-height: 30%;
+    width: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 
-  .movie-cardy h3 {
-      font-size: 1.5vw;
-      margin: 0 10px;
-  }
+.movie-cardy {
+    width: 40%;
+    margin: 10px auto;
+}
 
-  .movie-poster-img {
-      width: 100%;
-      height: auto;
-  }
+.movie-cardy h3 {
+    font-size: 1.5vw;
+    margin: 0 10px;
+}
+
+.movie-poster-img {
+    width: 98%;
+    height: auto;
+    padding: 0 10px;
+}
 
  .page-footer {
      background-color: var(--blue);
