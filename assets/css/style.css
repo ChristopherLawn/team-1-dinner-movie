@@ -123,6 +123,18 @@ a {
  .hide {
      display: none;
  }
+
+ /* Restaurant Styles */
+.restaurant-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.restaurant-modal {
+    height: auto;
+}
+
  @media screen and (max-width: 575px) {
     .movie-select {
       justify-content: center;
