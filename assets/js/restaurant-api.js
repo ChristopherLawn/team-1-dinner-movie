@@ -1,3 +1,21 @@
+var zipSearchContainerEl = document.querySelector("#zip-list");
+var localStorageGetZipCodes = "zip-code-list"
+var zipCodeArray;
+if (localStorage.getItem(localStorageGetZipCodes)) {
+  zipCodeArray = JSON.parse(localStorage.getItem(localStorageGetZipCodes)) || [];
+  zipCodeArray.forEach(element => {
+      var zipEl = document.createElement("li");
+      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.textContent = element;
+      zipEl.addEventListener("click", function(event) {
+      generateGeocode(event.target.textContent)
+      });
+      zipSearchContainerEl.appendChild(zipEl);
+  });
+} else {
+  zipCodeArray = [];
+};
+
 //RESTAURANT API CALL
 var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
 var restaurantEl = document.querySelector("#restaurant"); //results container
@@ -6,13 +24,60 @@ var restaurantEl = document.querySelector("#restaurant"); //results container
 var searchBtn = document.querySelector("#submit");
 var zipcode = document.querySelector("#zip");
 
-searchClickHandler = function (event) {
-  event.preventDefault();
-  restaurantEl.innerHTML = "";
-  generateGeocode(zipcode.value);
-};
+searchBtn.addEventListener("click", function () {
+  var zipcode = document.querySelector("#zip");
+  if (zipcode.value) {
+    generateGeocode(zipcode.value);
+    displayZips(zipcode);
 
-searchBtn.addEventListener("click", searchClickHandler);
+    zipcode.value = "";
+  }
+});
+
+var displayZips = function(zipcode) {
+    // var hideZipContainer = document.querySelector("#zip-search-container");
+    //     hideZipContainer.classList.remove("hide");
+    // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
+    //     hideZipHistoryHeader.classList.remove("hide");
+    // var hideCityContainer = document.querySelector("#clear");
+    //     hideCityContainer.classList.remove("hide");
+  let inArray = false;
+  for(let i = 0; i < zipCodeArray.length; i++){
+      if(zipCodeArray[i] === zipcode.value){
+          inArray = true;
+      }
+  }
+  if(!inArray){
+      zipCodeArray.push(zipcode.value);
+      var zipEl = document.createElement("li");
+      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
+      zipEl.textContent = zipcode.value;
+      zipEl.addEventListener("click", function(event) {
+      generateGeocode(event.target.textContent)
+      });
+      zipSearchContainerEl.appendChild(zipEl);
+      localStorage.setItem(localStorageGetZipCodes, JSON.stringify(zipCodeArray));
+      console.log(zipEl);
+      console.log(zipCodeArray);
+  }
+}
+
+// 'Clear Search History' functions
+var clearSearch = document.querySelector("#clear");
+
+var clearHistory = function() {
+  localStorage.clear();
+  // var hideZipContainer = document.querySelector("zip-search-choice");
+  //     hideZipContainer.classList.add("hide");
+  // var hideZipHeader = document.querySelector("zip-search-header");
+  //     hideZipHeader.classList.add("hide");
+  // var hideClearButton = document.getElementById("#clear");
+  //     hideClearButton.classList.add("hide");
+  document.location.reload(true);
+}
+
+// 'Clear Search History' button
+clearSearch.addEventListener("click", clearHistory);
 
 //geocoding API call
 generateGeocode = function (zipcode) {
