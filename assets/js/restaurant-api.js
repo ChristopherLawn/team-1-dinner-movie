@@ -34,11 +34,19 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
+window.onload = function() {
+  if(zipCodeArray[i] === 0){
+    var hideZipHistoryHeader = document.querySelector("#zip-search-label");
+    hideZipHistoryHeader.classList.remove("hide");
+}};
+
 var displayZips = function(zipcode) {
     // var hideZipContainer = document.querySelector("#zip-search-container");
     //     hideZipContainer.classList.remove("hide");
-    // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
-    //     hideZipHistoryHeader.classList.remove("hide");
+    var unhideClearButton = document.getElementById("clear");
+        unhideClearButton.classList.remove("hide");
+    var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+        unhideZipHistoryHeader.classList.remove("hide");
     // var hideCityContainer = document.querySelector("#clear");
     //     hideCityContainer.classList.remove("hide");
   let inArray = false;
@@ -49,6 +57,8 @@ var displayZips = function(zipcode) {
   }
   if(!inArray){
       zipCodeArray.push(zipcode.value);
+      var hideZipHistoryHeader = document.querySelector("#zip-search-label");
+      hideZipHistoryHeader.classList.remove("hide");
       var zipEl = document.createElement("li");
       zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
       zipEl.textContent = zipcode.value;
@@ -66,13 +76,13 @@ var displayZips = function(zipcode) {
 var clearSearch = document.querySelector("#clear");
 
 var clearHistory = function() {
+  var hideClearButton = document.getElementById("clear");
+  hideClearButton.classList.add("hide");
   localStorage.clear();
   // var hideZipContainer = document.querySelector("zip-search-choice");
   //     hideZipContainer.classList.add("hide");
   // var hideZipHeader = document.querySelector("zip-search-header");
   //     hideZipHeader.classList.add("hide");
-  // var hideClearButton = document.getElementById("#clear");
-  //     hideClearButton.classList.add("hide");
   document.location.reload(true);
 }
 

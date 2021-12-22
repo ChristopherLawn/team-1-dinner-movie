@@ -20,6 +20,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Anton&family=Raleway:wght@700">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Chew & View!</title>
   </head>
@@ -27,17 +29,18 @@
   <body>
     <header id="header" class="header-class">
       <h1 class="header-title center-align">
-        <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
+        <span><i class="fas fa-utensils"></i> Chew View <i class="fas fa-film"></i></span>
       </h1>
-      <p class="flow-text center-align justify-content-center">
-        Select your favorite food style, the date of your date, and the zip code
-        where you'll be hanging out. We'll find local restaurants and movie
-        showtimes for you!
+      <p class="flow-text center-align justify-content-center header-p">
+        Enter a zip code to find local <i class="fas fa-store store-icon"></i> restaurants
+      </p>
+      <p class="flow-text center-align justify-content-center header-p">
+        Search key words or titles for <i class="fas fa-video video-icon"></i> movie recommendations
       </p>
     </header>
     <div class="container">
       <div id="search-container" class="search row">
-          <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
+          <label id="zip-label" class="section-header">Enter Zip Code</label>
           <input
             type="text"
             id="zip"
@@ -46,16 +49,16 @@
             placeholder="00000"
           />
           <button type="submit" id="submit" class="btn search-btn">
-            Search
+            Search Restaurants
           </button>
 
-          <button type="clear" id="clear" class="btn clear-btn">
+          <button type="clear" id="clear" class="btn clear-btn hide">
             Clear Search History
           </button>
         </div>
 
         <div id="zip-search-container" class="zip-search-choice col s12 m3 l3">
-          <label id="zip-search-label" class="zip-search-header">Search History:</label>
+          <label id="zip-search-label" class="section-header hide">Zip Searches</label>
           <ul id="zip-list" class="zip-list-group"></ul>
         </div>
 
@@ -66,8 +69,8 @@
         id="restaurant-results-container"
         class="restaurant-results col s12 m6"
       >
-        <label id="restaurant-label" class="restaurant-header"
-          >Restaurant Options:</label
+        <label id="restaurant-label" class="section-header"
+          >Choose Food Style</label
         >
         <div class="card horizontal">
           <div class="card-stacked">
@@ -87,13 +90,13 @@
         <div id="search-container">
           <div id=search-input-container>
             <form action="submit" id="search-form">
-              <label for="movie-search-input">Search Movie Options:</label>
+              <label for="movie-search-input" class="section-header">Enter Key Word or Title</label>
               <input type="text" id="movie-search-input" placeholder="Click here to search">
-              <button type="submit">Submit</button>
+              <button type="submit" id="movie-btn" class="btn movie-btn">Search Movies</button>
             </form>
           </div>
         </div>
-        <label id="movie-label" class="movie-header">Movie Options:</label>
+        <label id="movie-label" class="section-header">Movie Options</label>
         <div id="movie-card-con" class="container">
           <div name="movie-list" id="movie" class="movie-select row justify-content-center"></div>
         </div>
