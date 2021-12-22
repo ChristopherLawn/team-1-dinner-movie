@@ -1,20 +1,21 @@
 var zipSearchContainerEl = document.querySelector("#zip-list");
-var localStorageGetZipCodes = "zip-code-list"
+var localStorageGetZipCodes = "zip-code-list";
 var zipCodeArray;
 if (localStorage.getItem(localStorageGetZipCodes)) {
-  zipCodeArray = JSON.parse(localStorage.getItem(localStorageGetZipCodes)) || [];
-  zipCodeArray.forEach(element => {
-      var zipEl = document.createElement("li");
-      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
-      zipEl.textContent = element;
-      zipEl.addEventListener("click", function(event) {
-      generateGeocode(event.target.textContent)
-      });
-      zipSearchContainerEl.appendChild(zipEl);
+  zipCodeArray =
+    JSON.parse(localStorage.getItem(localStorageGetZipCodes)) || [];
+  zipCodeArray.forEach((element) => {
+    var zipEl = document.createElement("li");
+    zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
+    zipEl.textContent = element;
+    zipEl.addEventListener("click", function (event) {
+      generateGeocode(event.target.textContent);
+    });
+    zipSearchContainerEl.appendChild(zipEl);
   });
 } else {
   zipCodeArray = [];
-};
+}
 
 //RESTAURANT API CALL
 var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
@@ -34,38 +35,38 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
-var displayZips = function(zipcode) {
-    // var hideZipContainer = document.querySelector("#zip-search-container");
-    //     hideZipContainer.classList.remove("hide");
-    // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
-    //     hideZipHistoryHeader.classList.remove("hide");
-    // var hideCityContainer = document.querySelector("#clear");
-    //     hideCityContainer.classList.remove("hide");
+var displayZips = function (zipcode) {
+  // var hideZipContainer = document.querySelector("#zip-search-container");
+  //     hideZipContainer.classList.remove("hide");
+  // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
+  //     hideZipHistoryHeader.classList.remove("hide");
+  // var hideCityContainer = document.querySelector("#clear");
+  //     hideCityContainer.classList.remove("hide");
   let inArray = false;
-  for(let i = 0; i < zipCodeArray.length; i++){
-      if(zipCodeArray[i] === zipcode.value){
-          inArray = true;
-      }
+  for (let i = 0; i < zipCodeArray.length; i++) {
+    if (zipCodeArray[i] === zipcode.value) {
+      inArray = true;
+    }
   }
-  if(!inArray){
-      zipCodeArray.push(zipcode.value);
-      var zipEl = document.createElement("li");
-      zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
-      zipEl.textContent = zipcode.value;
-      zipEl.addEventListener("click", function(event) {
-      generateGeocode(event.target.textContent)
-      });
-      zipSearchContainerEl.appendChild(zipEl);
-      localStorage.setItem(localStorageGetZipCodes, JSON.stringify(zipCodeArray));
-      console.log(zipEl);
-      console.log(zipCodeArray);
+  if (!inArray) {
+    zipCodeArray.push(zipcode.value);
+    var zipEl = document.createElement("li");
+    zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
+    zipEl.textContent = zipcode.value;
+    zipEl.addEventListener("click", function (event) {
+      generateGeocode(event.target.textContent);
+    });
+    zipSearchContainerEl.appendChild(zipEl);
+    localStorage.setItem(localStorageGetZipCodes, JSON.stringify(zipCodeArray));
+    console.log(zipEl);
+    console.log(zipCodeArray);
   }
-}
+};
 
 // 'Clear Search History' functions
 var clearSearch = document.querySelector("#clear");
 
-var clearHistory = function() {
+var clearHistory = function () {
   localStorage.clear();
   // var hideZipContainer = document.querySelector("zip-search-choice");
   //     hideZipContainer.classList.add("hide");
@@ -74,7 +75,7 @@ var clearHistory = function() {
   // var hideClearButton = document.getElementById("#clear");
   //     hideClearButton.classList.add("hide");
   document.location.reload(true);
-}
+};
 
 // 'Clear Search History' button
 clearSearch.addEventListener("click", clearHistory);
@@ -153,6 +154,7 @@ displayRestaurants = function (data) {
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
+    categoryBtn.setAttribute("class", "restaurant-btn, btn");
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
       restaurantNames(event);
@@ -173,7 +175,10 @@ displayRestaurants = function (data) {
           //container
           var restaurantContainer = document.createElement("div");
           restaurantEl.appendChild(restaurantContainer);
-          restaurantContainer.setAttribute("class", "restaurant-result");
+          restaurantContainer.setAttribute(
+            "class",
+            "restaurant-result hoverable"
+          );
           //name
           var restaurantName = document.createElement("div");
           restaurantContainer.appendChild(restaurantName);
@@ -182,6 +187,11 @@ displayRestaurants = function (data) {
           var restaurantAddress = document.createElement("div");
           restaurantContainer.appendChild(restaurantAddress);
           restaurantAddress.innerHTML = restaurantArray[i].address;
+          //image
+          var img = document.createElement("img");
+          img.setAttribute("class", "restaurant-image")
+          img.src = restaurantArray[i].photo.images.medium.url;
+          restaurantContainer.appendChild(img);
         }
       }
     }
