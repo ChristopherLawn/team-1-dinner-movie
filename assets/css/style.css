@@ -234,6 +234,10 @@ p {
       margin: 0 10px;
   }
 
+  .clear-btn {
+      overflow: hidden;
+  }
+
   .movie-poster-img {
       width: 100%;
       height: auto;
@@ -246,6 +250,24 @@ p {
  /* .search-btn {
      background-color: var(--orange);
  } */
+
+ .restaurant-btn {
+     background-color: var(--orange)
+ }
+
+ .restaurant-result {
+     margin: 5px;
+     border: 1px solid;
+ }
+
+ .restaurant-img {
+     height: 200vw;
+     width: 400vw;
+ }
+
+.btn {
+    margin: 5px;
+}
 
  .hide {
      display: none;
