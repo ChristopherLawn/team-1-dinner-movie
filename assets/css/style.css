@@ -148,8 +148,8 @@ a {
     margin-right: auto;
 }
 
-.restaurant-modal {
-    height: auto;
+.modal {
+    max-height: fit-content;
 }
 
  @media screen and (max-width: 575px) {
