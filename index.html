@@ -60,7 +60,7 @@
             Clear Search History
           </button>
         </div>
-
+    </div>
         <div id="zip-search-container" class="zip-search-choice col s12">
           <label id="zip-search-label" class="zip-search-header section-header hide">Zip Searches</label>
           <ul id="zip-list" class="zip-list-group"></ul>
@@ -86,9 +86,9 @@
             <!-- <div class="card-action">
               <a href="#">This is a link to resterant website</a>
             </div> -->
-          </div>
         </div>
       </div>
+    </div>
 
       <div id="movie-results-container" class="movie-results col s12 m6">
         <div id="search-container">
@@ -109,67 +109,59 @@
           <div name="movie-list" id="movie" class="movie-select row justify-content-center"></div>
         </div>
       </div>
-
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Movie Details</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-            >Close</a
-          >
-        </div>
-      </div>
-
-      <div class="carousel hide-on-small-only">
-        <a class="carousel-item" href="#one!"
-          ><img src="./assets/images/food1.jpeg"
-        /></a>
-        <a class="carousel-item" href="#two!"
-          ><img src="./assets/images/theatre1.jpeg"
-        /></a>
-        <a class="carousel-item" href="#three!"
-          ><img src="./assets/images/food2.jpeg"
-        /></a>
-        <a class="carousel-item" href="#four!"
-          ><img src="./assets/images/theatre2.jpeg"
-        /></a>
-        <a class="carousel-item" href="#five!"
-          ><img src="./assets/images/food3.jpeg"
-        /></a>
-        <a class="carousel-item" href="#six!"
-          ><img src="./assets/images/theatre3.jpg"
-        /></a>
-        <a class="carousel-item" href="#seven!"
-          ><img src="./assets/images/food4.jpeg"
-        /></a>
-        <a class="carousel-item" href="#eight!"
-          ><img src="./assets/images/theatre4.jpg"
-        /></a>
-        <a class="carousel-item" href="#nine!"
-          ><img src="./assets/images/food5.jpeg"
-        /></a>
-        <a class="carousel-item" href="#ten!"
-          ><img src="./assets/images/theatre5.jpg"
-        /></a>
+      <label id="movie-label" class="movie-header">Movie Options:</label>
+      <div id="movie-card-con" class="container">
+        <div name="movie-list" id="movie" class="movie-select row justify-content-center"></div>
       </div>
     </div>
-
-    <!-- test to delete carasel and fixe commit problems -->
-
-    <footer id="footer" class="page-footer">
-      <div class="container">
-        <h5 class="white-text">❤️ Made With Love by Team 1</h5>
+    <!-- movie modal -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Movie Details</h4>
+        <p>A bunch of text</p>
       </div>
-      <div class="footer-copyright">
-        <div class="container">&copy; 2021 Chew & View, Inc.</div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
       </div>
-    </footer>
+    </div>
+    <!-- restaurant modal -->
+    <div id="restaurant-modal" class="modal">
+      <div class="modal-content">
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+<!-- carousel -->
+    <div class="carousel hide-on-small-only">
+      <a class="carousel-item" href="#one!"><img src="./assets/images/food1.jpeg" /></a>
+      <a class="carousel-item" href="#two!"><img src="./assets/images/theatre1.jpeg" /></a>
+      <a class="carousel-item" href="#three!"><img src="./assets/images/food2.jpeg" /></a>
+      <a class="carousel-item" href="#four!"><img src="./assets/images/theatre2.jpeg" /></a>
+      <a class="carousel-item" href="#five!"><img src="./assets/images/food3.jpeg" /></a>
+      <a class="carousel-item" href="#six!"><img src="./assets/images/theatre3.jpg" /></a>
+      <a class="carousel-item" href="#seven!"><img src="./assets/images/food4.jpeg" /></a>
+      <a class="carousel-item" href="#eight!"><img src="./assets/images/theatre4.jpg" /></a>
+      <a class="carousel-item" href="#nine!"><img src="./assets/images/food5.jpeg" /></a>
+      <a class="carousel-item" href="#ten!"><img src="./assets/images/theatre5.jpg" /></a>
+    </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/js/stylize.js"></script>
-    <script src="./assets/js/restaurant-api.js"></script>
-    <script src="./assets/js/movies.js"></script>
-  </body>
+  <!-- test to delete carasel and fixe commit problems -->
+
+  <footer id="footer" class="page-footer">
+    <div class="container">
+      <h5 class="white-text">❤️ Made With Love by Team 1</h5>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">&copy; 2021 Chew & View, Inc.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./assets/js/stylize.js"></script>
+  <script src="./assets/js/restaurant-api.js"></script>
+  <script src="./assets/js/movies.js"></script>
+</body>
+
 </html>
