@@ -36,6 +36,12 @@ searchBtn.addEventListener("click", function () {
 });
 
 var displayZips = function (zipcode) {
+  // var hideZipContainer = document.querySelector("#zip-search-container");
+  //     hideZipContainer.classList.remove("hide");
+  // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
+  //     hideZipHistoryHeader.classList.remove("hide");
+  // var hideCityContainer = document.querySelector("#clear");
+  //     hideCityContainer.classList.remove("hide");
   let inArray = false;
   for (let i = 0; i < zipCodeArray.length; i++) {
     if (zipCodeArray[i] === zipcode.value) {
@@ -152,6 +158,7 @@ displayRestaurants = function (data) {
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
+    categoryBtn.setAttribute("class", "restaurant-btn, btn");
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
       restaurantNames(event);

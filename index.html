@@ -12,6 +12,31 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Chew & View!</title>
 </head>
+  <body>
+    <header id="header" class="header-class">
+      <h1 class="header-title center-align">
+        <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
+      </h1>
+      <p class="flow-text center-align justify-content-center">
+        Select your favorite food style, the date of your date, and the zip code
+        where you'll be hanging out. We'll find local restaurants and movie
+        showtimes for you!
+      </p>
+    </header>
+    <div class="container">
+      <div id="search-container" class="search row">
+      <div class = "col s12">
+          <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
+          <input
+            type="text"
+            id="zip"
+            class="zip-select"
+            pattern="[0-9]{5}"
+            placeholder="00000"
+          />
+          <button type="submit" id="submit" class="btn search-btn">
+            Search
+          </button>
 
 <body>
   <header id="header" class="header-class">
@@ -40,6 +65,12 @@
     <div id="zip-search-container" class="zip-search-choice col s12 m3 l3">
       <label id="zip-search-label" class="zip-search-header">Search History:</label>
       <ul id="zip-list" class="zip-list-group"></ul>
+        <div id="zip-search-container" class="zip-search-choice col s12">
+          <label id="zip-search-label" class="zip-search-header">Search History:</label>
+          <ul id="zip-list" class="zip-list-group"></ul>
+        </div>
+        </div>
+      </div>
     </div>
 
   </div>
