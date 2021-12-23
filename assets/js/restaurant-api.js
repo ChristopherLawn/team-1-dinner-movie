@@ -134,7 +134,11 @@ getRestaurants = function (location) {
 
 //generate results in document
 displayRestaurants = function (data) {
-  var restaurantArray = data.data; //object
+  //clear container
+  restaurantEl.innerHTML = "";
+
+  var restaurantArray = data.data;
+  console.log(restaurantArray);
 
   //generate categories
   var categoriesArray = [];
@@ -172,26 +176,34 @@ displayRestaurants = function (data) {
       ) {
         //generate elements
         if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
-          //container
+          //restaurant info container
           var restaurantContainer = document.createElement("div");
           restaurantEl.appendChild(restaurantContainer);
-          restaurantContainer.setAttribute(
-            "class",
-            "restaurant-result hoverable"
-          );
-          //name
-          var restaurantName = document.createElement("div");
-          restaurantContainer.appendChild(restaurantName);
-          restaurantName.innerHTML = restaurantArray[i].name;
-          //address
-          var restaurantAddress = document.createElement("div");
-          restaurantContainer.appendChild(restaurantAddress);
-          restaurantAddress.innerHTML = restaurantArray[i].address;
-          //image
+          restaurantContainer.setAttribute("class", "restaurant-result");
+          //modal trigger
+          var restaurant = document.createElement("a");
+          restaurant.setAttribute("class", "btn modal-trigger");
+          restaurant.setAttribute("href", "#restaurant-modal");
+          restaurantContainer.appendChild(restaurant);
+          //content variables
+          var name = restaurantArray[i].name;
+          var address = restaurantArray[i].address;
+          var imgSrc = restaurantArray[i].photo.images.small.url;
+          var phone = restaurantArray[i].phone;
+          var website = restaurantArray[i].website;
+
+          //populate results by name
+          restaurant.innerHTML = name;
+          console.log(imgSrc);
+          //populate modal
           var img = document.createElement("img");
-          img.setAttribute("class", "restaurant-image")
-          img.src = restaurantArray[i].photo.images.medium.url;
-          restaurantContainer.appendChild(img);
+          img.src = imgSrc
+          img.setAttribute("class", "restaurant-img");
+          var modalEl = document.querySelector("#restaurant-modal");
+          modalEl.innerHTML =
+            '<center><div class="modal-content"><h4>' + name + "</h4></center>";
+            modalEl.appendChild(img);
+            modalEl.insertAdjacentHTML('beforeend', "<center><p>" + address + "</p><p>" + phone + "</p><p>" + '<a href="' + website + '">' + website +"</a></p></center>");
         }
       }
     }

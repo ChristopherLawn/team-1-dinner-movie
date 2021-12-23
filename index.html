@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Chew & View!</title>
-  </head>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Chew & View!</title>
+</head>
   <body>
     <header id="header" class="header-class">
       <h1 class="header-title center-align">
@@ -50,11 +38,33 @@
             Search
           </button>
 
-          <button type="clear" id="clear" class="btn clear-btn">
-            Clear Search History
-          </button>
-        </div>
+<body>
+  <header id="header" class="header-class">
+    <h1 class="header-title center-align">
+      <i class="fas fa-utensils"></i> Chew & View! <i class="fas fa-film"></i>
+    </h1>
+    <p class="flow-text center-align justify-content-center">
+      Select your favorite food style, the date of your date, and the zip code
+      where you'll be hanging out. We'll find local restaurants and movie
+      showtimes for you!
+    </p>
+  </header>
+  <div class="container">
+    <div id="search-container" class="search row">
+      <label id="zip-label" class="zip-header">Choose a Zip Code:</label>
+      <input type="text" id="zip" class="zip-select" pattern="[0-9]{5}" placeholder="00000" />
+      <button type="submit" id="submit" class="btn search-btn">
+        Search
+      </button>
 
+      <button type="clear" id="clear" class="btn clear-btn">
+        Clear Search History
+      </button>
+    </div>
+
+    <div id="zip-search-container" class="zip-search-choice col s12 m3 l3">
+      <label id="zip-search-label" class="zip-search-header">Search History:</label>
+      <ul id="zip-list" class="zip-list-group"></ul>
         <div id="zip-search-container" class="zip-search-choice col s12">
           <label id="zip-search-label" class="zip-search-header">Search History:</label>
           <ul id="zip-list" class="zip-list-group"></ul>
@@ -62,104 +72,85 @@
         </div>
       </div>
     </div>
-    <div id="results-container" class="results row">
-      <div
-        id="restaurant-results-container"
-        class="restaurant-results col s12 m6"
-      >
-        <label id="restaurant-label" class="restaurant-header"
-          >Restaurant Options:</label
-        >
-        <div class="card horizontal">
-          <div class="card-stacked">
-            <div
-              name="restaurant-list"
-              id="restaurant"
-              class="restaurant-select card-content"
-            ></div>
-            <!-- <div class="card-action">
+
+  </div>
+  </div>
+  <div id="results-container" class="results row">
+    <div id="restaurant-results-container" class="restaurant-results col s12 m6">
+      <label id="restaurant-label" class="restaurant-header">Restaurant Options:</label>
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div name="restaurant-list" id="restaurant" class="restaurant-select card-content"></div>
+          <!-- <div class="card-action">
               <a href="#">This is a link to resterant website</a>
             </div> -->
-          </div>
         </div>
-      </div>
-
-      <div id="movie-results-container" class="movie-results col s12 m6">
-        <div id="search-container">
-          <div id=search-input-container>
-            <form action="submit" id="search-form">
-              <label for="movie-search-input">Search Movie Options:</label>
-              <input type="text" id="movie-search-input" placeholder="Click here to search">
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-        <label id="movie-label" class="movie-header">Movie Options:</label>
-        <div id="movie-card-con" class="container">
-          <div name="movie-list" id="movie" class="movie-select row justify-content-center"></div>
-        </div>
-      </div>
-
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Movie Details</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-            >Close</a
-          >
-        </div>
-      </div>
-
-      <div class="carousel hide-on-small-only">
-        <a class="carousel-item" href="#one!"
-          ><img src="./assets/images/food1.jpeg"
-        /></a>
-        <a class="carousel-item" href="#two!"
-          ><img src="./assets/images/theatre1.jpeg"
-        /></a>
-        <a class="carousel-item" href="#three!"
-          ><img src="./assets/images/food2.jpeg"
-        /></a>
-        <a class="carousel-item" href="#four!"
-          ><img src="./assets/images/theatre2.jpeg"
-        /></a>
-        <a class="carousel-item" href="#five!"
-          ><img src="./assets/images/food3.jpeg"
-        /></a>
-        <a class="carousel-item" href="#six!"
-          ><img src="./assets/images/theatre3.jpg"
-        /></a>
-        <a class="carousel-item" href="#seven!"
-          ><img src="./assets/images/food4.jpeg"
-        /></a>
-        <a class="carousel-item" href="#eight!"
-          ><img src="./assets/images/theatre4.jpg"
-        /></a>
-        <a class="carousel-item" href="#nine!"
-          ><img src="./assets/images/food5.jpeg"
-        /></a>
-        <a class="carousel-item" href="#ten!"
-          ><img src="./assets/images/theatre5.jpg"
-        /></a>
       </div>
     </div>
 
-    <!-- test to delete carasel and fixe commit problems -->
-
-    <footer id="footer" class="page-footer">
-      <div class="container">
-        <h5 class="white-text">❤️ Made With Love by Team 1</h5>
+    <div id="movie-results-container" class="movie-results col s12 m6">
+      <div id="search-container">
+        <div id=search-input-container>
+          <form action="submit" id="search-form">
+            <label for="movie-search-input">Search Movie Options:</label>
+            <input type="text" id="movie-search-input" placeholder="Click here to search">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">&copy; 2021 Chew & View, Inc.</div>
+      <label id="movie-label" class="movie-header">Movie Options:</label>
+      <div id="movie-card-con" class="container">
+        <div name="movie-list" id="movie" class="movie-select row justify-content-center"></div>
       </div>
-    </footer>
+    </div>
+    <!-- movie modal -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Movie Details</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+    <!-- restaurant modal -->
+    <div id="restaurant-modal" class="modal">
+      <div class="modal-content">
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+<!-- carousel -->
+    <div class="carousel hide-on-small-only">
+      <a class="carousel-item" href="#one!"><img src="./assets/images/food1.jpeg" /></a>
+      <a class="carousel-item" href="#two!"><img src="./assets/images/theatre1.jpeg" /></a>
+      <a class="carousel-item" href="#three!"><img src="./assets/images/food2.jpeg" /></a>
+      <a class="carousel-item" href="#four!"><img src="./assets/images/theatre2.jpeg" /></a>
+      <a class="carousel-item" href="#five!"><img src="./assets/images/food3.jpeg" /></a>
+      <a class="carousel-item" href="#six!"><img src="./assets/images/theatre3.jpg" /></a>
+      <a class="carousel-item" href="#seven!"><img src="./assets/images/food4.jpeg" /></a>
+      <a class="carousel-item" href="#eight!"><img src="./assets/images/theatre4.jpg" /></a>
+      <a class="carousel-item" href="#nine!"><img src="./assets/images/food5.jpeg" /></a>
+      <a class="carousel-item" href="#ten!"><img src="./assets/images/theatre5.jpg" /></a>
+    </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/js/stylize.js"></script>
-    <script src="./assets/js/restaurant-api.js"></script>
-    <script src="./assets/js/movies.js"></script>
-  </body>
+  <!-- test to delete carasel and fixe commit problems -->
+
+  <footer id="footer" class="page-footer">
+    <div class="container">
+      <h5 class="white-text">❤️ Made With Love by Team 1</h5>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">&copy; 2021 Chew & View, Inc.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./assets/js/stylize.js"></script>
+  <script src="./assets/js/restaurant-api.js"></script>
+  <script src="./assets/js/movies.js"></script>
+</body>
+
 </html>
