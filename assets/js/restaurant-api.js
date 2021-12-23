@@ -12,6 +12,10 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
       });
       zipSearchContainerEl.appendChild(zipEl);
   });
+  var unhideClearButton = document.getElementById("clear");
+      unhideClearButton.classList.remove("hide");
+  var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+      unhideZipHistoryHeader.classList.remove("hide");
 } else {
   zipCodeArray = [];
 };

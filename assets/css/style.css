@@ -9,9 +9,9 @@
     --border-radius: .3rem;
 }
 
-body {
+/* body {
     background-color: var(--yellow);
-}
+} */
 
 /* .dropdown-content{
     width: max-content !important;
@@ -64,7 +64,7 @@ body {
     color:var(--blue);
     font-family: Anton;
     font-size: 20px;
-    text-shadow: 1px 1px 1px var(--orange);
+    /* text-shadow: 1px 1px 1px var(--orange); */
   }
 
   ::placeholder {
@@ -175,7 +175,7 @@ a {
 p {
     color: var(--maroon);
     font-weight: bold;
-    text-shadow: 1px 1px 1px var(--orange);
+    /* text-shadow: 1px 1px 1px var(--orange); */
 }
 
 .dropdown-trigger, .food-select{
@@ -188,27 +188,32 @@ p {
     background-color: transparent;
     color: transparent;
     display: none;
+    opacity: 0;
   };
 
  input:focus::-webkit-input-placeholder { 
     background-color: transparent;
     color:transparent;
+    opacity: 0;
   };
 
  input:focus:-moz-placeholder { 
     background-color: transparent;
     color:transparent;
+    opacity: 0;
   }; /* FF 4-18 */
 
  input:focus::-moz-placeholder { 
     background-color: transparent;
     color:transparent;
+    opacity: 0;
 
   }; /* FF 19+ */
 
  input:focus:-ms-input-placeholder {
     background-color: transparent;
     color:transparent;
+    opacity: 0;
   }; /* IE 10+ */
   
   #movie-card-con {
@@ -255,9 +260,19 @@ p {
       justify-content: center;
     }
 
+    .header-title {
+      font-size: 50px;
+    }
+
     span {
         width: 100%;
         display: inline-block;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .header-title {
+      font-size: 45px;
     }
   }
   

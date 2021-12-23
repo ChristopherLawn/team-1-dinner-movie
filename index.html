@@ -23,14 +23,16 @@
     <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Anton&family=Raleway:wght@700">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Chew & View!</title>
+    <title>Chew View!</title>
   </head>
 
   <body>
     <header id="header" class="header-class">
+      <div class="page-title col s12 m3 l3">
       <h1 class="header-title center-align">
         <span><i class="fas fa-utensils"></i> Chew View <i class="fas fa-film"></i></span>
       </h1>
+      </div>
       <p class="flow-text center-align justify-content-center header-p">
         Enter a zip code to find local <i class="fas fa-store store-icon"></i> restaurants
       </p>
@@ -47,6 +49,7 @@
             class="zip-select"
             pattern="[0-9]{5}"
             placeholder="00000"
+            onfocus="this.placeholder=''"
           />
           <button type="submit" id="submit" class="btn search-btn">
             Search Restaurants
@@ -91,7 +94,11 @@
           <div id=search-input-container>
             <form action="submit" id="search-form">
               <label for="movie-search-input" class="section-header">Enter Key Word or Title</label>
-              <input type="text" id="movie-search-input" placeholder="Click here to search">
+              <input
+                type="text"
+                id="movie-search-input"
+                placeholder="Click here to search"
+                onfocus="this.placeholder=''">
               <button type="submit" id="movie-btn" class="btn movie-btn">Search Movies</button>
             </form>
           </div>
