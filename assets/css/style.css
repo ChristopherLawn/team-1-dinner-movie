@@ -271,8 +271,22 @@ p {
      display: none;
  }
 
+.modal {
+    border-radius: var(--border-radius);
+}
+
 .modal-content {
     background-color: var(--yellow);
+    color: var(--blue);
+    font-weight: light;
+}
+
+.modal-content h4 {
+    color: var(--maroon);
+}
+
+.modal-content p {
+    color: var(--blue);
 }
 
  @media screen and (max-width: 575px) {
