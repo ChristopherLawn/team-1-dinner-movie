@@ -118,6 +118,10 @@ a {
     padding: 0 10px;
 }
 
+.clear-btn {
+    overflow: hidden;
+}
+
  .page-footer {
      background-color: var(--blue);
  }
@@ -126,9 +130,34 @@ a {
      background-color: var(--orange);
  }
 
+ .restaurant-btn {
+     background-color: var(--orange)
+ }
+
+ .restaurant-result {
+     margin: 5px;
+     border: 1px solid;
+ }
+
+.btn {
+    margin: 5px;
+}
+
  .hide {
      display: none;
  }
+
+ /* Restaurant Styles */
+.restaurant-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal {
+    max-height: fit-content;
+}
+
  @media screen and (max-width: 575px) {
     .movie-select {
       justify-content: center;
