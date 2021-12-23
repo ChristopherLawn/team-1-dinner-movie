@@ -1,0 +1,143 @@
+
+/* based off of groovy color palette */
+:root {
+    --dark: #171219;
+    --blue: #225560;
+    --yellow: #EDF060;
+    --orange: #F0803C;
+    --maroon: #310D20;
+}
+
+
+/* .dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ } */
+
+ .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+ .food-select {
+    width: max-content !important;
+    height:auto;
+    padding-top: 7px;
+ }
+
+ .search-btn, .btn:focus {
+     background-color: var(--orange);
+     color: var(--maroon);
+ }
+
+ .search-btn:hover{
+    background-color: var(--maroon);
+    color: var(--orange);
+ }
+
+ .clear-btn, .clear-btn:focus {
+    background-color: var(--blue);
+    color: var(--yellow);
+}
+
+.clear-btn:hover{
+    background-color: var(--yellow);
+    color: var(--blue);
+}
+
+.zip-btn, .zip-btn:focus {
+    background-color: var(--yellow);
+    color: var(--dark);
+}
+
+.zip-btn:hover {
+    background-color: var(--dark);
+    color: var(--yellow);
+}
+
+ .dropdown-content li>a {
+     color: black;
+     align-items: center;
+ }
+
+a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+ /* .dropdown-trigger, .food-select{
+     width: 100%;
+     display: flex;
+ } */
+
+ .date-select:hover, .zip-select:hover {
+   color: var(--orange);
+ }
+ 
+ ::-webkit-input-placeholder:hover { /* Chrome/Opera/Safari */
+    color: var(--orange);
+    font-weight: bolder;
+  }
+
+  #movie-card-con {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: space-around;
+  }
+ 
+  .movie-cardy {
+      width: 40%;
+      padding: 0, 10px;
+  }
+
+  .movie-cardy h3 {
+      font-size: 1.5vw;
+      margin: 0 10px;
+  }
+
+  .movie-poster-img {
+      width: 100%;
+      height: auto;
+  }
+
+ .page-footer {
+     background-color: var(--blue);
+ }
+
+ .search-btn {
+     background-color: var(--orange);
+ }
+
+ .hide {
+     display: none;
+ }
+
+ /* Restaurant Styles */
+.restaurant-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.restaurant-modal {
+    height: auto;
+}
+
+ @media screen and (max-width: 575px) {
+    .movie-select {
+      justify-content: center;
+    }
+  }
+  
