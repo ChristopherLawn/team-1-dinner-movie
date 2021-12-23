@@ -251,9 +251,7 @@ p {
      background-color: var(--orange);
  } */
 
- .restaurant-btn {
-     background-color: var(--orange)
- }
+
 
  .restaurant-result {
      margin: 5px;
@@ -298,3 +296,19 @@ p {
     }
   }
   
+
+  .restaurant-btn, .restaurant-btn:focus {
+    background-color: var(--yellow);
+    border-radius: var(--border-radius);
+    color: var(--yellow);
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px var(--maroon);
+}
+
+.restaurant-btn:hover {
+    background-color: var(--maroon);
+    border-radius: var(--border-radius);
+    color: var(--dark);
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px var(--yellow);
+}
