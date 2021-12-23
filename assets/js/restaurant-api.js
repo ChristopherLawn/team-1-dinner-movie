@@ -18,7 +18,7 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
 }
 
 //RESTAURANT API CALL
-var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
+var apiKey = "8f375f78cfmshc8b558ca44d4980p13ed1ejsn240d1b3459f9";
 var restaurantEl = document.querySelector("#restaurant"); //results container
 
 //click zipcode button
@@ -132,13 +132,13 @@ getRestaurants = function (location) {
   });
 };
 
+var restaurantArrayCategory = []; //modal generation
+
 //generate results in document
 displayRestaurants = function (data) {
   //clear container
   restaurantEl.innerHTML = "";
-
   var restaurantArray = data.data;
-  console.log(restaurantArray);
 
   //generate categories
   var categoriesArray = [];
@@ -174,43 +174,70 @@ displayRestaurants = function (data) {
         restaurantArray[i].cuisine != undefined &&
         Object.keys(restaurantArray[i].cuisine).length != 0
       ) {
-        //generate elements
         if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
-          //restaurant info container
+          //new array by category
+          var restaurantObject = new Object();
+          restaurantObject.name = restaurantArray[i].name;
+          restaurantObject.address = restaurantArray[i].address;
+          restaurantObject.imgSrc = restaurantArray[i].photo.images.small.url;
+          restaurantObject.phone = restaurantArray[i].phone;
+          restaurantObject.website = restaurantArray[i].website;
+
+          restaurantArrayCategory.push(restaurantObject);
+
+          //restaurant results
           var restaurantContainer = document.createElement("div");
           restaurantEl.appendChild(restaurantContainer);
           restaurantContainer.setAttribute("class", "restaurant-result");
+
           //modal trigger
-          var restaurant = document.createElement("a");
+          var restaurant = document.createElement("button");
+          restaurant.innerHTML = restaurantObject.name; //populate results by name
           restaurant.setAttribute("class", "btn modal-trigger");
           restaurant.setAttribute("href", "#restaurant-modal");
+          restaurant.setAttribute("id", [i]);
           restaurantContainer.appendChild(restaurant);
-          //content variables
-          var name = restaurantArray[i].name;
-          var address = restaurantArray[i].address;
-          var imgSrc = restaurantArray[i].photo.images.small.url;
-          var phone = restaurantArray[i].phone;
-          var website = restaurantArray[i].website;
-
-          //populate results by name
-          restaurant.innerHTML = name;
-          console.log(imgSrc);
-          //populate modal
-          var img = document.createElement("img");
-          img.src = imgSrc
-          img.setAttribute("class", "restaurant-img");
-          var modalEl = document.querySelector("#restaurant-modal");
-          modalEl.innerHTML =
-            '<center><div class="modal-content"><h4>' + name + "</h4></center>";
-            modalEl.appendChild(img);
-            modalEl.insertAdjacentHTML('beforeend', "<center><p>" + address + "</p><p>" + phone + "</p><p>" + '<a href="' + website + '">' + website +"</a></p></center>");
+          restaurant.addEventListener("click", function (event) {
+            displayModal(event);
+          });
         }
       }
     }
-    // **return to categories button**
-    // var backBtn = document.createElement("button");
-    // restaurantEl.appendChild(backBtn);
-    // backBtn.textContent = "Back to categories";
-    // backBtn.addEventListener("click", );
   };
+};
+
+//modal content
+var displayModal = function (event) {
+  for (var i = 0; i < restaurantArrayCategory.length; i++) {
+    if (restaurantArrayCategory[i].name === event.target.textContent) {
+      //modal contents
+      var name = restaurantArrayCategory[i].name;
+      var address = restaurantArrayCategory[i].address;
+      var imgSrc = restaurantArrayCategory[i].imgSrc;
+      var phone = restaurantArrayCategory[i].phone;
+      var website = restaurantArrayCategory[i].website;
+
+      var img = document.createElement("img");
+      img.src = imgSrc;
+      img.setAttribute("class", "restaurant-img");
+
+      var modalEl = document.querySelector("#restaurant-modal");
+      modalEl.innerHTML =
+        '<center><div class="modal-content"><h4>' + name + "</h4></center>";
+      modalEl.appendChild(img);
+      modalEl.insertAdjacentHTML(
+        "beforeend",
+        "<center><p>" +
+          address +
+          "</p><p>" +
+          phone +
+          "</p><p>" +
+          '<a href="' +
+          website +
+          '">' +
+          website +
+          "</a></p></center>"
+      );
+    }
+  }
 };
