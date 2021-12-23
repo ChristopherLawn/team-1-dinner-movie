@@ -166,7 +166,8 @@ displayRestaurants = function (data) {
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
-    categoryBtn.setAttribute("class", "restaurant-btn, btn");
+    categoryBtn.setAttribute("class", "btn, restaurant-btn");
+    categoryBtn.setAttribute("font-family", "Anton");
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
       restaurantNames(event);
