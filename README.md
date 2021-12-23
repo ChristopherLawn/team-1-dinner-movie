@@ -1,7 +1,7 @@
-# <center>Chew & View</center>
+# <center>Chew View</center>
 
 # Purpose of Website
-The purpose of this website is to simplify date nights and speed up decision making. Chew & View solves a multitude of problems particularly when you're on the move, stuck on which movie & food pairing to pick, or simpily trying to figure out some options. For example, a user is going on a date night with their partner, the user would use the API to easily pick a random movie and food option that the user can get excited for. The application will facilitate quick API calls which allows the user to get restaurant selections based on their zip code, store the user's zip codes for faster selection, and provide random movie selections & selection based on user keyword search. 
+The purpose of this website is to simplify date nights and speed up decision-making. Chew View solves a multitude of problems - particularly when you're on the move, stuck on which movie and food pairing to pick, or simpily trying to figure out some options! For example, a user is going on a date night with their partner. The user would use this site to easily pick a food option and random movie that they can get excited for. The application will facilitate quick API calls which allow the user to: get restaurant selections based on zip code, store the user's previous zip code searches for faster selection, and provide random movie selections or selections based on the user's keyword or title search. 
 
 # Built With
 * HTML
