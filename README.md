@@ -15,7 +15,7 @@ The purpose of this website is to simplify date nights and speed up decision-mak
 https://christopherlawn.github.io/team-1-dinner-movie/
 
 # Screenshot
-![Getting Started](./assets/images/webpage.png)
+![chew-view-homepage-screenshot](https://user-images.githubusercontent.com/91863054/147312551-e172acc5-f6d1-4819-b451-c46e1f4e9b0d.png)
 
 # Contributions
 * Chris Lawn
