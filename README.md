@@ -18,10 +18,10 @@ https://christopherlawn.github.io/team-1-dinner-movie/
 ![chew-view-homepage-screenshot](https://user-images.githubusercontent.com/91863054/147312551-e172acc5-f6d1-4819-b451-c46e1f4e9b0d.png)
 
 # Contributions
-* Chris Lawn
-* Daniel Harned
-* Katie Churchwell
-* Kenneth Washington
-* Zachary Clark
+* Chris Lawn - https://github.com/ChristopherLawn
+* Daniel Harned - https://github.com/DrDano
+* Katie Churchwell - https://github.com/katiechurchwell
+* Kenneth Washington - https://github.com/iiMKenny
+* Zachary Clark - https://github.com/zaclark369
 
 # ©️ 2021
