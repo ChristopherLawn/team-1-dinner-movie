@@ -1,19 +1,15 @@
 
-/* based off of groovy color palette */
+/* SITE STYLE PALETTE */
 :root {
     --dark: #171219;
     --blue: #225560;
     --yellow: #EDF060;
     --orange: #F0803C;
     --maroon: #310D20;
+    --border-radius: .3rem;
 }
 
-
-/* .dropdown-content{
-    width: max-content !important;
-    height:auto !important;
- } */
-
+/* ELEMENT STYLES */
  .row {
     display: flex;
     flex-direction: row;
@@ -28,40 +24,121 @@
     flex: 1;
   }
 
+  i {
+    color: var(--orange);
+    text-shadow: 2px 2px 3px var(--maroon);
+  }
+
+  /* HEADER STYLES */
+  .header-title {
+      color: var(--blue);
+      text-shadow: 2px 2px 3px var(--orange);
+      font-family: Anton;
+  }
+
+  .header-p {
+    color: var(--maroon);
+    text-shadow: 1px 1px 1px var(--orange);
+    font-weight: bolder;
+    outline: 1px var(--maroon);
+  }
+
+  .store-icon {
+    color: var(--blue);
+    text-shadow: 1px 1px 1px var(--orange);
+  }
+
+  .video-icon {
+    color: var(--orange);
+    text-shadow: 1px 1px 1px var(--blue);
+  }
+
+  /* SECTION TITLE STYLES */
+  .section-header {
+    color:var(--blue);
+    font-family: Anton;
+    font-size: 20px;
+  }
+
+  /* SEARCH PLACEHOLDER TEXT STYLES */
+  ::placeholder {
+    color: var(--dark);
+    /* font-family: Anton; */
+    font-weight: light;
+    opacity: 0.5;
+    text-shadow: 1px 1px 1px var(--orange);
+  }
+
+ /* RESTAURANT RESULTS CONTAINER STYLES */
  .food-select {
     width: max-content !important;
     height:auto;
     padding-top: 7px;
  }
 
+ .btn {
+    margin: 5px;
+    font-weight: bolder;
+ }
+
+ /* 'SEARCH RESTAURANTS' BUTTON STYLES */
  .search-btn, .btn:focus {
      background-color: var(--orange);
+     border-radius: var(--border-radius);
      color: var(--maroon);
+     text-shadow: 1px 1px 1px var(--yellow);
  }
 
  .search-btn:hover{
     background-color: var(--maroon);
+    border-radius: var(--border-radius);
     color: var(--orange);
+    text-shadow: 1px 1px 1px var(--blue);
  }
 
+ /* 'CLEAR SEARCH HISTORY' BUTTON STYLES */
  .clear-btn, .clear-btn:focus {
     background-color: var(--blue);
+    border-radius: var(--border-radius);
     color: var(--yellow);
+    text-shadow: 1px 1px 1px var(--orange);
 }
 
 .clear-btn:hover{
     background-color: var(--yellow);
+    border-radius: var(--border-radius);
     color: var(--blue);
+    text-shadow: 1px 1px 1px var(--orange);
 }
 
+/* 'SEARCH MOVIES' BUTTON STYLES */
+.movie-btn, .movie-btn:focus {
+    background-color: var(--maroon);
+    border-radius: var(--border-radius);
+    color: var(--orange);
+    text-shadow: 1px 1px 1px var(--blue);
+}
+
+.movie-btn:hover{
+   background-color: var(--orange);
+   border-radius: var(--border-radius);
+   color: var(--maroon);
+   text-shadow: 1px 1px 1px var(--yellow);
+}
+
+/* 'ZIP CODE' BUTTON STYLES */
 .zip-btn, .zip-btn:focus {
-    background-color: var(--yellow);
-    color: var(--dark);
+    background-color: var(--dark);
+    border-radius: var(--border-radius);
+    color: var(--yellow);
+    text-shadow: 1px 1px 1px var(--blue);
 }
 
 .zip-btn:hover {
-    background-color: var(--dark);
-    color: var(--yellow);
+    background-color: var(--yellow);
+    border-radius: var(--border-radius);
+    color: var(--dark);
+    text-shadow: 1px 1px 1px var(--blue);
 }
 
  .dropdown-content li>a {
@@ -69,26 +146,108 @@
      align-items: center;
  }
 
+ /* RESTAURANT CHOICE BUTTON STYLES */
+ .restaurant-btn, .restaurant-btn:focus {
+    background-color: var(--yellow);
+    border-radius: var(--border-radius);
+    color: var(--maroon);
+    font-weight: bolder;
+}
+
+.restaurant-btn:hover {
+    background-color: var(--maroon);
+    border-radius: var(--border-radius);
+    color: var(--yellow);
+    font-weight: bolder;
+}
+
+/* MODAL STYLES */
+.modal {
+    border-radius: var(--border-radius);
+    max-height: fit-content;
+}
+
+.modal-content {
+    background-color: var(--yellow);
+    color: var(--blue);
+    font-weight: light;
+}
+
+.modal-content h4 {
+    color: var(--maroon);
+}
+
+.modal-content p {
+    color: var(--blue);
+    }
+
+/* RESTAURANT MODAL IMAGE STYLES */    
+.restaurant-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+};
+
+/* TEXT STYLES */
 a {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
- /* .dropdown-trigger, .food-select{
+h3 {
+    color: var(--maroon);
+    font-family: Anton;
+}
+
+h4 {
+    color: var(--orange);
+    font-family: Anton; 
+}
+
+p {
+    color: var(--maroon);
+    font-weight: bold;
+}
+
+.dropdown-trigger, .food-select{
      width: 100%;
      display: flex;
- } */
-
- .date-select:hover, .zip-select:hover {
-   color: var(--orange);
- }
+}
  
- ::-webkit-input-placeholder:hover { /* Chrome/Opera/Safari */
-    color: var(--orange);
-    font-weight: bolder;
-  }
+  /* BROWSER-BASED STYLES */
+ ::-webkit-input-placeholder:hover {
+    background-color: transparent;
+    color: transparent;
+    display: none;
+    opacity: 0;
+  };
 
+ input:focus::-webkit-input-placeholder { 
+    background-color: transparent;
+    color:transparent;
+    opacity: 0;
+  };
+
+ input:focus:-moz-placeholder { 
+    background-color: transparent;
+    color:transparent;
+    opacity: 0;
+  }; /* FF 4-18 */
+
+ input:focus::-moz-placeholder { 
+    background-color: transparent;
+    color:transparent;
+    opacity: 0;
+  }; /* FF 19+ */
+
+ input:focus:-ms-input-placeholder {
+    background-color: transparent;
+    color:transparent;
+    opacity: 0;
+  }; /* IE 10+ */
+  
+  /* MOVIE CARD STYLES */
   #movie-card-con {
       display: flex;
       flex-wrap: wrap;
@@ -107,37 +266,49 @@ a {
       margin: 0 10px;
   }
 
+  .clear-btn {
+      overflow: hidden;
+  }
+
   .movie-poster-img {
       width: 100%;
       height: auto;
   }
 
+  /* FOOTER STYLES */
  .page-footer {
      background-color: var(--blue);
  }
 
- .search-btn {
-     background-color: var(--orange);
+ .restaurant-result {
+     margin: 5px;
+     border: 1px solid;
  }
 
+ /* HIDE FUNCTION */
  .hide {
      display: none;
  }
 
- /* Restaurant Styles */
-.restaurant-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.restaurant-modal {
-    height: auto;
-}
-
+ /* MEDIA QUERIES */
  @media screen and (max-width: 575px) {
     .movie-select {
       justify-content: center;
+    }
+
+    .header-title {
+      font-size: 50px;
+    }
+
+    span {
+        width: 100%;
+        display: inline-block;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    .header-title {
+      font-size: 45px;
     }
   }
   

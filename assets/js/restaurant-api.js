@@ -1,3 +1,4 @@
+// CHECKS LOCAL STORAGE FOR ZIP CODE SEARCH HISTORY & AUTO-POPULATES ALL EXISTING ZIP CODES AS BUTTONS
 var zipSearchContainerEl = document.querySelector("#zip-list");
 var localStorageGetZipCodes = "zip-code-list";
 var zipCodeArray;
@@ -9,25 +10,33 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
     zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
     zipEl.textContent = element;
     zipEl.addEventListener("click", function (event) {
+      var unhideFoodChoices = document.getElementById("restaurant-results-container");
+          unhideFoodChoices.classList.remove("hide");
       generateGeocode(event.target.textContent);
     });
     zipSearchContainerEl.appendChild(zipEl);
   });
+  var unhideClearButton = document.getElementById("clear");
+      unhideClearButton.classList.remove("hide");
+  var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+      unhideZipHistoryHeader.classList.remove("hide");
 } else {
   zipCodeArray = [];
 }
 
-//RESTAURANT API CALL
-var apiKey = "98749236fcmsh9a0a6d6e384a89ep1d7bd0jsn68ffef7de409";
+// RESTAURANT API CALL
+var apiKey = "8f375f78cfmshc8b558ca44d4980p13ed1ejsn240d1b3459f9";
 var restaurantEl = document.querySelector("#restaurant"); //results container
 
-//click zipcode button
+// ZIP CODE SEARCH FUNCTION
 var searchBtn = document.querySelector("#submit");
 var zipcode = document.querySelector("#zip");
 
 searchBtn.addEventListener("click", function () {
   var zipcode = document.querySelector("#zip");
   if (zipcode.value) {
+    var unhideFoodChoices = document.getElementById("restaurant-results-container");
+    unhideFoodChoices.classList.remove("hide");
     generateGeocode(zipcode.value);
     displayZips(zipcode);
 
@@ -35,7 +44,12 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
-var displayZips = function (zipcode) {
+// DISPLAY SEARCHED ZIP CODES AS BUTTONS WITHOUT REPEATING ZIP CODES ALREADY SEARCHED
+var displayZips = function(zipcode) {
+    var unhideClearButton = document.getElementById("clear");
+        unhideClearButton.classList.remove("hide");
+    var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+        unhideZipHistoryHeader.classList.remove("hide");
   let inArray = false;
   for (let i = 0; i < zipCodeArray.length; i++) {
     if (zipCodeArray[i] === zipcode.value) {
@@ -57,26 +71,21 @@ var displayZips = function (zipcode) {
   }
 };
 
-// 'Clear Search History' functions
+// 'CLEAR SEARCH HISTORY' BUTTON FUNCTIONS
 var clearSearch = document.querySelector("#clear");
 
-var clearHistory = function () {
+var clearHistory = function() {
+  var hideClearButton = document.getElementById("clear");
+  hideClearButton.classList.add("hide");
   localStorage.clear();
-  // var hideZipContainer = document.querySelector("zip-search-choice");
-  //     hideZipContainer.classList.add("hide");
-  // var hideZipHeader = document.querySelector("zip-search-header");
-  //     hideZipHeader.classList.add("hide");
-  // var hideClearButton = document.getElementById("#clear");
-  //     hideClearButton.classList.add("hide");
   document.location.reload(true);
 };
 
-// 'Clear Search History' button
 clearSearch.addEventListener("click", clearHistory);
 
-//geocoding API call
+// GEOCODING API CALL FOR ZIP CODE INFORMATION
 generateGeocode = function (zipcode) {
-  //forward geocoding
+
   var geocodeApiUrl =
     "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward?postalcode=" +
     zipcode +
@@ -95,7 +104,7 @@ generateGeocode = function (zipcode) {
   });
 };
 
-//use coordinates for travel advisor API
+// USE COORDINATES OBTAINED FROM GEOCODE API CALL TO MAKE TRAVEL ADVISOR API CALL
 getRestaurants = function (location) {
   var bl_latitude = location[0].boundingbox[0]; //bottom left latitude
   var tr_latitude = location[0].boundingbox[1]; //top right latitude
@@ -126,15 +135,16 @@ getRestaurants = function (location) {
   });
 };
 
-//generate results in document
+// RESTAURANT RESULTS FUNCTIONS
+var restaurantArrayCategory = []; //modal generation
+
+// POPULATE RESTAURANT RESULTS TO CONTAINER
 displayRestaurants = function (data) {
-  //clear container
+  // CLEAR CONTAINER
   restaurantEl.innerHTML = "";
-
   var restaurantArray = data.data;
-  console.log(restaurantArray);
 
-  //generate categories
+  // GENERATE FOOD CATEGORIES
   var categoriesArray = [];
   for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
     if (
@@ -148,62 +158,92 @@ displayRestaurants = function (data) {
     }
   }
 
-  //category buttons
+  // GENERATE FOOD CATEGORY BUTTONS
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
+    categoryBtn.setAttribute("class", "btn, restaurant-btn");
+    categoryBtn.setAttribute("font-family", "Anton");
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
       restaurantNames(event);
     });
   }
 
+  // GENERATE RESTAURANT SUGGESTION RESULTS
   restaurantNames = function (event) {
-    //clear contents
+    // CLEAR CONTENTS
     restaurantEl.innerHTML = "";
-    //iterate and find matches by type
     for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
       if (
         restaurantArray[i].cuisine != undefined &&
         Object.keys(restaurantArray[i].cuisine).length != 0
       ) {
-        //generate elements
         if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
-          //restaurant info container
+          // 
+          var restaurantObject = new Object();
+          restaurantObject.name = restaurantArray[i].name;
+          restaurantObject.address = restaurantArray[i].address;
+          restaurantObject.imgSrc = restaurantArray[i].photo.images.small.url;
+          restaurantObject.phone = restaurantArray[i].phone;
+          restaurantObject.website = restaurantArray[i].website;
+
+          restaurantArrayCategory.push(restaurantObject);
+
+          // RESTAURANT RESULTS
           var restaurantContainer = document.createElement("div");
           restaurantEl.appendChild(restaurantContainer);
           restaurantContainer.setAttribute("class", "restaurant-result");
-          //modal trigger
-          var restaurant = document.createElement("a");
-          restaurant.setAttribute("class", "btn modal-trigger");
-          restaurant.setAttribute("href", "#restaurant-modal");
-          restaurantContainer.appendChild(restaurant);
-          //content variables
-          var name = restaurantArray[i].name;
-          var address = restaurantArray[i].address;
-          var imgSrc = restaurantArray[i].photo.images.small.url;
-          var phone = restaurantArray[i].phone;
-          var website = restaurantArray[i].website;
 
-          //populate results by name
-          restaurant.innerHTML = name;
-          console.log(imgSrc);
-          //populate modal
-          var img = document.createElement("img");
-          img.src = imgSrc
-          img.setAttribute("class", "restaurant-img");
-          var modalEl = document.querySelector("#restaurant-modal");
-          modalEl.innerHTML =
-            '<center><div class="modal-content"><h4>' + name + "</h4></center>";
-            modalEl.appendChild(img);
-            modalEl.insertAdjacentHTML('beforeend', "<center><p>" + address + "</p><p>" + phone + "</p><p>" + '<a href="' + website + '">' + website +"</a></p></center>");
+          // RESTAURANT MODAL TRIGGER
+          var restaurant = document.createElement("button");
+          restaurant.innerHTML = restaurantObject.name; //populate results by name
+          restaurant.setAttribute("class", "btn modal-trigger restaurant-btn");
+          restaurant.setAttribute("href", "#restaurant-modal");
+          restaurant.setAttribute("id", [i]);
+          restaurantContainer.appendChild(restaurant);
+          restaurant.addEventListener("click", function (event) {
+            displayModal(event);
+          });
         }
       }
     }
-    // **return to categories button**
-    // var backBtn = document.createElement("button");
-    // restaurantEl.appendChild(backBtn);
-    // backBtn.textContent = "Back to categories";
-    // backBtn.addEventListener("click", );
   };
+};
+
+// RESTAURANT MODALS
+var displayModal = function (event) {
+  for (var i = 0; i < restaurantArrayCategory.length; i++) {
+    if (restaurantArrayCategory[i].name === event.target.textContent) {
+      // MODAL CONTENTS
+      var name = restaurantArrayCategory[i].name;
+      var address = restaurantArrayCategory[i].address;
+      var imgSrc = restaurantArrayCategory[i].imgSrc;
+      var phone = restaurantArrayCategory[i].phone;
+      var website = restaurantArrayCategory[i].website;
+
+      var img = document.createElement("img");
+      img.src = imgSrc;
+      img.setAttribute("class", "restaurant-img");
+      img.setAttribute("id", "restaurant-img");
+
+      var modalEl = document.querySelector("#restaurant-modal");
+      modalEl.innerHTML =
+        '<center><div class="modal-content"><h4>' + name + "</h4></center>";
+      modalEl.appendChild(img);
+      modalEl.insertAdjacentHTML(
+        "beforeend",
+        "<center><p>" +
+          address +
+          "</p><p>" +
+          phone +
+          "</p><p>" +
+          '<a href="' +
+          website +
+          '">' +
+          website +
+          "</a></p></center>"
+      );
+    }
+  }
 };
