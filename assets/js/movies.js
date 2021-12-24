@@ -1,10 +1,4 @@
-// DANIEL's CODE \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
-// get OMDB movie database data and movie poster
-// give user a search bar to search for movie titles
-// return movie poster along with synopsis and release year for EVERY result that api returns
-// If user clicks on one of these titles, will call api again and get more detailed results
-
+// GENERATING MOVIE DATA FROM OMDB API
 var movieSectionCon = document.querySelector("#movie");
 var movieFormEl = document.querySelector("#search-form");
 var movieSearchInputEl = document.querySelector("#movie-search-input");
@@ -40,6 +34,7 @@ var getMovieData = function (movieTitle) {
     })
 }
 
+// ACQUIRE MOVIE DETAILS
 var getMovieDetails = function (imdbIDnum) {
     var apiKey = "403f37df";
     fetch(`https://www.omdbapi.com/?i=${imdbIDnum}&apikey=${apiKey}&type=movie&r=json`).then(function(response) {
@@ -60,6 +55,7 @@ var getMovieDetails = function (imdbIDnum) {
     })
 }
 
+// MOVIE DETAILS MODAL
 var displayMovieDetails = function (plot, date, actorlist, review1, review2, website) {
 
     var modalEl = document.querySelector("#modal1")
@@ -72,6 +68,7 @@ var displayMovieDetails = function (plot, date, actorlist, review1, review2, web
     movieSectionCon.appendChild(modalEl);
 }
 
+// DISPLAYS MOVIE CARDS ON HOMEPAGE
 var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
     var movieSectionCon = document.querySelector("#movie");
@@ -104,6 +101,7 @@ var displayMovie = function(movieTitle, movieYear, posterUrl, imdbID) {
 
 }
 
+// AUTO-GENERATES RANDOM MOVIE SUGGESTIONS BASED ON KEYWORDS
 var chooseMovieTitle = function() {
     var searchedMovieTitle = movieSearchInputEl.value;
 
@@ -118,6 +116,7 @@ var chooseMovieTitle = function() {
     }
 }
 
+// 'SEARCH MOVIES' BUTTON FUNCTIONS
 movieClickHandler = function (event) {
     event.preventDefault();
     var target = event.target
@@ -135,5 +134,3 @@ movieFormEl.addEventListener("submit", movieClickHandler);
 chooseMovieTitle();
 
 setInterval(chooseMovieTitle, 30000)
-
-// DANIEL's CODE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

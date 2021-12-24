@@ -1,5 +1,5 @@
 
-/* based off of groovy color palette */
+/* SITE STYLE PALETTE */
 :root {
     --dark: #171219;
     --blue: #225560;
@@ -9,15 +9,7 @@
     --border-radius: .3rem;
 }
 
-/* body {
-    background-color: var(--yellow);
-} */
-
-/* .dropdown-content{
-    width: max-content !important;
-    height:auto !important;
- } */
-
+/* ELEMENT STYLES */
  .row {
     display: flex;
     flex-direction: row;
@@ -37,6 +29,7 @@
     text-shadow: 2px 2px 3px var(--maroon);
   }
 
+  /* HEADER STYLES */
   .header-title {
       color: var(--blue);
       text-shadow: 2px 2px 3px var(--orange);
@@ -60,13 +53,14 @@
     text-shadow: 1px 1px 1px var(--blue);
   }
 
+  /* SECTION TITLE STYLES */
   .section-header {
     color:var(--blue);
     font-family: Anton;
     font-size: 20px;
-    /* text-shadow: 1px 1px 1px var(--orange); */
   }
 
+  /* SEARCH PLACEHOLDER TEXT STYLES */
   ::placeholder {
     color: var(--dark);
     /* font-family: Anton; */
@@ -75,33 +69,38 @@
     text-shadow: 1px 1px 1px var(--orange);
   }
 
+ /* RESTAURANT RESULTS CONTAINER STYLES */
  .food-select {
     width: max-content !important;
     height:auto;
     padding-top: 7px;
  }
 
+ .btn {
+    margin: 5px;
+    font-weight: bolder;
+ }
+
+ /* 'SEARCH RESTAURANTS' BUTTON STYLES */
  .search-btn, .btn:focus {
      background-color: var(--orange);
      border-radius: var(--border-radius);
      color: var(--maroon);
-     font-weight: bolder;
-     text-shadow: 1px 1px 1px var(--blue);
+     text-shadow: 1px 1px 1px var(--yellow);
  }
 
  .search-btn:hover{
     background-color: var(--maroon);
     border-radius: var(--border-radius);
     color: var(--orange);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--blue);
  }
 
+ /* 'CLEAR SEARCH HISTORY' BUTTON STYLES */
  .clear-btn, .clear-btn:focus {
     background-color: var(--blue);
     border-radius: var(--border-radius);
     color: var(--yellow);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--orange);
 }
 
@@ -109,15 +108,14 @@
     background-color: var(--yellow);
     border-radius: var(--border-radius);
     color: var(--blue);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--orange);
 }
 
+/* 'SEARCH MOVIES' BUTTON STYLES */
 .movie-btn, .movie-btn:focus {
     background-color: var(--maroon);
     border-radius: var(--border-radius);
     color: var(--orange);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--blue);
 }
 
@@ -125,15 +123,14 @@
    background-color: var(--orange);
    border-radius: var(--border-radius);
    color: var(--maroon);
-   font-weight: bolder;
    text-shadow: 1px 1px 1px var(--yellow);
 }
 
+/* 'ZIP CODE' BUTTON STYLES */
 .zip-btn, .zip-btn:focus {
     background-color: var(--dark);
     border-radius: var(--border-radius);
     color: var(--yellow);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--blue);
 }
 
@@ -141,12 +138,7 @@
     background-color: var(--yellow);
     border-radius: var(--border-radius);
     color: var(--dark);
-    font-weight: bolder;
     text-shadow: 1px 1px 1px var(--blue);
-}
-
-.btn {
-    margin: 5px;
 }
 
  .dropdown-content li>a {
@@ -154,28 +146,68 @@
      align-items: center;
  }
 
+ /* RESTAURANT CHOICE BUTTON STYLES */
+ .restaurant-btn, .restaurant-btn:focus {
+    background-color: var(--yellow);
+    border-radius: var(--border-radius);
+    color: var(--maroon);
+    font-weight: bolder;
+}
+
+.restaurant-btn:hover {
+    background-color: var(--maroon);
+    border-radius: var(--border-radius);
+    color: var(--yellow);
+    font-weight: bolder;
+}
+
+/* MODAL STYLES */
+.modal {
+    border-radius: var(--border-radius);
+    max-height: fit-content;
+}
+
+.modal-content {
+    background-color: var(--yellow);
+    color: var(--blue);
+    font-weight: light;
+}
+
+.modal-content h4 {
+    color: var(--maroon);
+}
+
+.modal-content p {
+    color: var(--blue);
+    }
+
+/* RESTAURANT MODAL IMAGE STYLES */    
+.restaurant-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+};
+
+/* TEXT STYLES */
 a {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-/* h3 {
-    color: var(--orange);
-    text-shadow: 1px 1px 2px var(--blue);
-    font-family: Anton;    
-} */
+h3 {
+    color: var(--maroon);
+    font-family: Anton;
+}
 
-/* h4 {
-    color: var(--blue);
-    text-shadow: 1px 1px 2px var(--orange);
-    font-family: Anton;    
-} */
+h4 {
+    color: var(--orange);
+    font-family: Anton; 
+}
 
 p {
     color: var(--maroon);
     font-weight: bold;
-    /* text-shadow: 1px 1px 1px var(--orange); */
 }
 
 .dropdown-trigger, .food-select{
@@ -183,7 +215,7 @@ p {
      display: flex;
 }
  
-  /* Chrome/Opera/Safari */
+  /* BROWSER-BASED STYLES */
  ::-webkit-input-placeholder:hover {
     background-color: transparent;
     color: transparent;
@@ -207,7 +239,6 @@ p {
     background-color: transparent;
     color:transparent;
     opacity: 0;
-
   }; /* FF 19+ */
 
  input:focus:-ms-input-placeholder {
@@ -216,6 +247,7 @@ p {
     opacity: 0;
   }; /* IE 10+ */
   
+  /* MOVIE CARD STYLES */
   #movie-card-con {
       display: flex;
       flex-wrap: wrap;
@@ -243,71 +275,22 @@ p {
       height: auto;
   }
 
+  /* FOOTER STYLES */
  .page-footer {
      background-color: var(--blue);
  }
-
- /* .search-btn {
-     background-color: var(--orange);
- } */
-
-
 
  .restaurant-result {
      margin: 5px;
      border: 1px solid;
  }
 
-.btn {
-    margin: 5px;
-}
-
+ /* HIDE FUNCTION */
  .hide {
      display: none;
  }
 
- .restaurant-btn, .restaurant-btn:focus {
-    background-color: var(--yellow);
-    border-radius: var(--border-radius);
-    color: var(--maroon);
-    font-weight: bolder;
-    /* text-shadow: 1px 1px 1px var(--orange); */
-}
-
-.restaurant-btn:hover {
-    background-color: var(--maroon);
-    border-radius: var(--border-radius);
-    color: var(--yellow);
-    font-weight: bolder;
-    /* text-shadow: 1px 1px 1px var(--orange); */
-}
-
-.modal {
-    border-radius: var(--border-radius);
-    max-height: fit-content;
-}
-
-.modal-content {
-    background-color: var(--yellow);
-    color: var(--blue);
-    font-weight: light;
-}
-
-.modal-content h4 {
-    color: var(--maroon);
-}
-
-.modal-content p {
-    color: var(--blue);
-    }
-
- /* Restaurant Styles */
-.restaurant-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-};
-
+ /* MEDIA QUERIES */
  @media screen and (max-width: 575px) {
     .movie-select {
       justify-content: center;

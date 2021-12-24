@@ -1,3 +1,4 @@
+// CHECKS LOCAL STORAGE FOR ZIP CODE SEARCH HISTORY & AUTO-POPULATES ALL EXISTING ZIP CODES AS BUTTONS
 var zipSearchContainerEl = document.querySelector("#zip-list");
 var localStorageGetZipCodes = "zip-code-list";
 var zipCodeArray;
@@ -9,6 +10,8 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
     zipEl.classList = "btn zip-btn zip-btn:hover col-lg-3 col-md-3 col-sm-12";
     zipEl.textContent = element;
     zipEl.addEventListener("click", function (event) {
+      var unhideFoodChoices = document.getElementById("restaurant-results-container");
+          unhideFoodChoices.classList.remove("hide");
       generateGeocode(event.target.textContent);
     });
     zipSearchContainerEl.appendChild(zipEl);
@@ -21,17 +24,19 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
   zipCodeArray = [];
 }
 
-//RESTAURANT API CALL
+// RESTAURANT API CALL
 var apiKey = "8f375f78cfmshc8b558ca44d4980p13ed1ejsn240d1b3459f9";
 var restaurantEl = document.querySelector("#restaurant"); //results container
 
-//click zipcode button
+// ZIP CODE SEARCH FUNCTION
 var searchBtn = document.querySelector("#submit");
 var zipcode = document.querySelector("#zip");
 
 searchBtn.addEventListener("click", function () {
   var zipcode = document.querySelector("#zip");
   if (zipcode.value) {
+    var unhideFoodChoices = document.getElementById("restaurant-results-container");
+    unhideFoodChoices.classList.remove("hide");
     generateGeocode(zipcode.value);
     displayZips(zipcode);
 
@@ -39,21 +44,12 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
-// window.onload = function() {
-//   if(zipCodeArray[i] === 0){
-//     var hideZipHistoryHeader = document.querySelector("#zip-search-label");
-//     hideZipHistoryHeader.classList.remove("hide");
-// }};
-
+// DISPLAY SEARCHED ZIP CODES AS BUTTONS WITHOUT REPEATING ZIP CODES ALREADY SEARCHED
 var displayZips = function(zipcode) {
-    // var hideZipContainer = document.querySelector("#zip-search-container");
-    //     hideZipContainer.classList.remove("hide");
     var unhideClearButton = document.getElementById("clear");
         unhideClearButton.classList.remove("hide");
     var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
         unhideZipHistoryHeader.classList.remove("hide");
-    // var hideCityContainer = document.querySelector("#clear");
-    //     hideCityContainer.classList.remove("hide");
   let inArray = false;
   for (let i = 0; i < zipCodeArray.length; i++) {
     if (zipCodeArray[i] === zipcode.value) {
@@ -75,26 +71,21 @@ var displayZips = function(zipcode) {
   }
 };
 
-// 'Clear Search History' functions
+// 'CLEAR SEARCH HISTORY' BUTTON FUNCTIONS
 var clearSearch = document.querySelector("#clear");
 
 var clearHistory = function() {
   var hideClearButton = document.getElementById("clear");
   hideClearButton.classList.add("hide");
   localStorage.clear();
-  // var hideZipContainer = document.querySelector("zip-search-choice");
-  //     hideZipContainer.classList.add("hide");
-  // var hideZipHeader = document.querySelector("zip-search-header");
-  //     hideZipHeader.classList.add("hide");
   document.location.reload(true);
 };
 
-// 'Clear Search History' button
 clearSearch.addEventListener("click", clearHistory);
 
-//geocoding API call
+// GEOCODING API CALL FOR ZIP CODE INFORMATION
 generateGeocode = function (zipcode) {
-  //forward geocoding
+
   var geocodeApiUrl =
     "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward?postalcode=" +
     zipcode +
@@ -113,7 +104,7 @@ generateGeocode = function (zipcode) {
   });
 };
 
-//use coordinates for travel advisor API
+// USE COORDINATES OBTAINED FROM GEOCODE API CALL TO MAKE TRAVEL ADVISOR API CALL
 getRestaurants = function (location) {
   var bl_latitude = location[0].boundingbox[0]; //bottom left latitude
   var tr_latitude = location[0].boundingbox[1]; //top right latitude
@@ -144,15 +135,16 @@ getRestaurants = function (location) {
   });
 };
 
+// RESTAURANT RESULTS FUNCTIONS
 var restaurantArrayCategory = []; //modal generation
 
-//generate results in document
+// POPULATE RESTAURANT RESULTS TO CONTAINER
 displayRestaurants = function (data) {
-  //clear container
+  // CLEAR CONTAINER
   restaurantEl.innerHTML = "";
   var restaurantArray = data.data;
 
-  //generate categories
+  // GENERATE FOOD CATEGORIES
   var categoriesArray = [];
   for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
     if (
@@ -166,7 +158,7 @@ displayRestaurants = function (data) {
     }
   }
 
-  //category buttons
+  // GENERATE FOOD CATEGORY BUTTONS
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
@@ -178,17 +170,17 @@ displayRestaurants = function (data) {
     });
   }
 
+  // GENERATE RESTAURANT SUGGESTION RESULTS
   restaurantNames = function (event) {
-    //clear contents
+    // CLEAR CONTENTS
     restaurantEl.innerHTML = "";
-    //iterate and find matches by type
     for (var i = 0; i < Object.keys(restaurantArray).length; i++) {
       if (
         restaurantArray[i].cuisine != undefined &&
         Object.keys(restaurantArray[i].cuisine).length != 0
       ) {
         if (restaurantArray[i].cuisine[0].name === event.target.textContent) {
-          //new array by category
+          // 
           var restaurantObject = new Object();
           restaurantObject.name = restaurantArray[i].name;
           restaurantObject.address = restaurantArray[i].address;
@@ -198,12 +190,12 @@ displayRestaurants = function (data) {
 
           restaurantArrayCategory.push(restaurantObject);
 
-          //restaurant results
+          // RESTAURANT RESULTS
           var restaurantContainer = document.createElement("div");
           restaurantEl.appendChild(restaurantContainer);
           restaurantContainer.setAttribute("class", "restaurant-result");
 
-          //modal trigger
+          // RESTAURANT MODAL TRIGGER
           var restaurant = document.createElement("button");
           restaurant.innerHTML = restaurantObject.name; //populate results by name
           restaurant.setAttribute("class", "btn modal-trigger restaurant-btn");
@@ -219,11 +211,11 @@ displayRestaurants = function (data) {
   };
 };
 
-//modal content
+// RESTAURANT MODALS
 var displayModal = function (event) {
   for (var i = 0; i < restaurantArrayCategory.length; i++) {
     if (restaurantArrayCategory[i].name === event.target.textContent) {
-      //modal contents
+      // MODAL CONTENTS
       var name = restaurantArrayCategory[i].name;
       var address = restaurantArrayCategory[i].address;
       var imgSrc = restaurantArrayCategory[i].imgSrc;
