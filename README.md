@@ -8,7 +8,7 @@ The purpose of this website is to simplify date nights and speed up decision-mak
 * CSS
 * Javascript
 * Materialize
-* Trip Advisor API
+* Travel Advisor API
 * OMDB Movie Database API
 
 # Website Link
