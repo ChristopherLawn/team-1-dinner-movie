@@ -13,6 +13,10 @@ if (localStorage.getItem(localStorageGetZipCodes)) {
     });
     zipSearchContainerEl.appendChild(zipEl);
   });
+  var unhideClearButton = document.getElementById("clear");
+      unhideClearButton.classList.remove("hide");
+  var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+      unhideZipHistoryHeader.classList.remove("hide");
 } else {
   zipCodeArray = [];
 }
@@ -35,13 +39,21 @@ searchBtn.addEventListener("click", function () {
   }
 });
 
-var displayZips = function (zipcode) {
-  // var hideZipContainer = document.querySelector("#zip-search-container");
-  //     hideZipContainer.classList.remove("hide");
-  // var hideZipHistoryHeader = document.querySelector("#zip-search-header");
-  //     hideZipHistoryHeader.classList.remove("hide");
-  // var hideCityContainer = document.querySelector("#clear");
-  //     hideCityContainer.classList.remove("hide");
+// window.onload = function() {
+//   if(zipCodeArray[i] === 0){
+//     var hideZipHistoryHeader = document.querySelector("#zip-search-label");
+//     hideZipHistoryHeader.classList.remove("hide");
+// }};
+
+var displayZips = function(zipcode) {
+    // var hideZipContainer = document.querySelector("#zip-search-container");
+    //     hideZipContainer.classList.remove("hide");
+    var unhideClearButton = document.getElementById("clear");
+        unhideClearButton.classList.remove("hide");
+    var unhideZipHistoryHeader = document.querySelector("#zip-search-label");
+        unhideZipHistoryHeader.classList.remove("hide");
+    // var hideCityContainer = document.querySelector("#clear");
+    //     hideCityContainer.classList.remove("hide");
   let inArray = false;
   for (let i = 0; i < zipCodeArray.length; i++) {
     if (zipCodeArray[i] === zipcode.value) {
@@ -66,14 +78,14 @@ var displayZips = function (zipcode) {
 // 'Clear Search History' functions
 var clearSearch = document.querySelector("#clear");
 
-var clearHistory = function () {
+var clearHistory = function() {
+  var hideClearButton = document.getElementById("clear");
+  hideClearButton.classList.add("hide");
   localStorage.clear();
   // var hideZipContainer = document.querySelector("zip-search-choice");
   //     hideZipContainer.classList.add("hide");
   // var hideZipHeader = document.querySelector("zip-search-header");
   //     hideZipHeader.classList.add("hide");
-  // var hideClearButton = document.getElementById("#clear");
-  //     hideClearButton.classList.add("hide");
   document.location.reload(true);
 };
 
@@ -158,7 +170,8 @@ displayRestaurants = function (data) {
   for (var i = 0; i < categoriesArray.length; i++) {
     var categoryBtn = document.createElement("button");
     restaurantEl.appendChild(categoryBtn);
-    categoryBtn.setAttribute("class", "restaurant-btn, btn");
+    categoryBtn.setAttribute("class", "btn, restaurant-btn");
+    categoryBtn.setAttribute("font-family", "Anton");
     categoryBtn.textContent = categoriesArray[i];
     categoryBtn.addEventListener("click", function (event) {
       restaurantNames(event);
@@ -193,7 +206,7 @@ displayRestaurants = function (data) {
           //modal trigger
           var restaurant = document.createElement("button");
           restaurant.innerHTML = restaurantObject.name; //populate results by name
-          restaurant.setAttribute("class", "btn modal-trigger");
+          restaurant.setAttribute("class", "btn modal-trigger restaurant-btn");
           restaurant.setAttribute("href", "#restaurant-modal");
           restaurant.setAttribute("id", [i]);
           restaurantContainer.appendChild(restaurant);
@@ -220,6 +233,7 @@ var displayModal = function (event) {
       var img = document.createElement("img");
       img.src = imgSrc;
       img.setAttribute("class", "restaurant-img");
+      img.setAttribute("id", "restaurant-img");
 
       var modalEl = document.querySelector("#restaurant-modal");
       modalEl.innerHTML =
