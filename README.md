@@ -1,6 +1,6 @@
-# Chew View
+# **Chew View**
 
-## Description
+## **Description**
 The best way to simplify date nights and speed up decision-making! Chew View solves a multitude of problems - particularly when you're on the move, stuck on which movie and food pairing to pick, or simpily trying to figure out some options. The application facilitates quick API calls which allow the user to: get restaurant selections based on zip code, store the user's previous zip code searches for faster selection, and provide random movie selections or suggestions based on the user's keyword or title search! 
 
 ## **Table of Contents**
@@ -13,7 +13,7 @@ The best way to simplify date nights and speed up decision-making! Chew View sol
 ## **Screenshot**
 ![chew-view-homepage-screenshot](https://user-images.githubusercontent.com/91863054/160073211-b34cab41-b939-445f-86d0-f94a63a71465.png)
 
-# **Programs**
+## **Programs**
 * CSS
 * HTML
 * Javascript
@@ -39,11 +39,11 @@ The best way to simplify date nights and speed up decision-making! Chew View sol
 2) Click on a movie title to see more info including a plot summary, critic consensus, and release date
 3) For random movie suggestions: refresh the website, view the list of suggestions that come up, and click titles for more info
 
-## Contribution
+## **Contribution**
 * Chris Lawn - https://github.com/ChristopherLawn
 * Daniel Harned - https://github.com/DrDano
 * Katie Churchwell - https://github.com/katiechurchwell
 * Kenneth Washington - https://github.com/iiMKenny
 * Zachary Clark - https://github.com/zaclark369
 
-# ©️ 2021
+# **©️ 2021**
